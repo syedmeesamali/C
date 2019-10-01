@@ -1,16 +1,14 @@
 #include <stdio.h>
-#include <stdlib.h>
+int larger(int a, int b)
+{
+    if (a > b)
+        return a;
+    return b;
+}
 
 int main()
 {
-    int decks;
-    puts("Enter some number: ");
-    scanf("%i", &decks);
-    if (decks < 1)
-    {
-        puts("Not a valid number!");
-        return 1;
-    }
-    printf("There are %i cards\n", (decks * 52));
+    int great = larger(25, 35);
+    printf("%i is the largest", great);
     return 0;
 }
