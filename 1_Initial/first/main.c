@@ -8,7 +8,15 @@ int larger(int a, int b)
 
 int main()
 {
-    int great = larger(25, 35);
-    printf("%i is the largest", great);
+    int x = 20;
+    while (x > 1)
+    {
+        printf("X value is: %i\n", x);
+        x = x - 1;
+        if (x == 4)
+        {
+            break;
+        }
+    }
     return 0;
 }
