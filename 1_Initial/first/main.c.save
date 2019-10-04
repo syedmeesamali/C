@@ -9,9 +9,12 @@ int main()
 {
     int latitude = 30;
     int longitude = 45;
-
-    go_south_east(latitude, longitude);
-    printf("Now lat is: %i and long is %i\n", latitude, longitude);
-    printf("No change from declared values .... ))))");
+    
+    while (x > 1)
+    {
+        printf("X value is: %i\n", x);
+        printf("X loc is: %i\n", &x);
+        x = x - 1;
+    }
     return 0;
 }
