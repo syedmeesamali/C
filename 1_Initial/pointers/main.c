@@ -1,5 +1,10 @@
 #include <stdio.h>
 
+void skip(char *msg)
+{
+    puts((msg+6));
+}
+
 int main()
 {
 
@@ -12,7 +17,12 @@ int main()
     printf("Pick contestant number %i\n", contest[2]);
     */
 
+    /*
     int doses[] = {1, 3, 2, 1000};
     printf("Issue doses %i", 3[doses]);
     return 0;
+    */
+    char *msg_from = "This is the correct message";
+    skip(msg_from);
+
 }
