@@ -2,17 +2,11 @@
 
 int main()
 {
-
-    /*
-    int contest[] = {1,2,3};
-    int *choice = contest;
-    contest[0] = 2;
-    contest[1] = contest[2];
-    contest[2] = *choice;
-    printf("Pick contestant number %i\n", contest[2]);
-    */
-
-    int doses[] = {1, 3, 2, 1000};
-    printf("Issue doses %i", 3[doses]);
+    char s[] = "How big is it?";
+    char *t = s;
+    printf("Star t is: %c \n", *t);
+    printf("s value is: %c \n", s);
+    printf(sizeof(*t));
+    printf(sizeof(s));
     return 0;
 }
