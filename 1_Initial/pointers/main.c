@@ -9,4 +9,10 @@ int main()
     printf(sizeof(*t));
     printf(sizeof(s));
     return 0;
+    */
+    char name[40];
+    printf("Enter your name: ");
+    scanf("%s", name);
+    printf("Your name is %s", name);
+    return 0;
 }
