@@ -8,7 +8,7 @@ int main()
     printf("Issue doses %i", 3[doses]);
     return 0;
     */
-    char *cards = "JQK";
+    char cards[] = "JQK";
     char a_card = cards[2];
     cards[2] = cards[1];
     cards[1] = cards[0];
