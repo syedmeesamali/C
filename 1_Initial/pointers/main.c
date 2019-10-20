@@ -8,9 +8,13 @@ int main()
     printf("Issue doses %i", 3[doses]);
     return 0;
     */
-    char name[40];
-    printf("Enter your name: ");
-    fgets(name, sizeof(name), stdin);
-    printf("Name is %s", name);
+    char *cards = "JQK";
+    char a_card = cards[2];
+    cards[2] = cards[1];
+    cards[1] = cards[0];
+    cards[0] = cards[2];
+    cards[2] = cards[1];
+    cards[1] = a_card;
+    puts(cards);
     return 0;
 }
