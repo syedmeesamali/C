@@ -1,4 +1,5 @@
 # depslib dependency file v1.0
-1571907609 source:c:\users\cclgulf\desktop\c\1_initial\pointers\main.c
+1572269131 source:c:\users\cclgulf\desktop\c\1_initial\pointers\main.c
 	<stdio.h>
+	<string.h>
 

@@ -1,15 +1,32 @@
 #include <stdio.h>
+#include <string.h>
+
+char tracks[][80] =
+{
+    "i left heart in the school",
+    "hello hello can you hear me",
+    "can't get you out of my head",
+    "from here to maternity",
+    "in the end it doesn't even matter",
+};
+
+void find_track(char search_for[])
+{
+    int i;
+    for (i=0; i<5; i++)
+    {
+        if(strstr(tracks[i], search_for))
+        {
+            printf("Track %i: '%s' \n",i,tracks[i]);
+        }
+    }
+}
+
 int main()
 {
-
-    char masked[] = "Alive";
-    char *jimmy = masked;
-    printf("Masked is: %s and raider is %s\n", masked, jimmy);
-    masked[0] = 'd';
-    masked[1] = 'e';
-    masked[2] = 'a';
-    masked[3] = 'd';
-    masked[4] = '!';
-    printf("Masked is: %s and raider is %s", masked, jimmy);
+    char search_for[80];
+    printf("Search for: ");
+    fgets(search_for, 80, stdin);
+    find_track(search_for);
     return 0;
 }
