@@ -6,12 +6,6 @@ struct Node {
 	struct Node* pNext;
 };
 
-struct List {
-	int size;
-	struct List* pHead;
-    struct List* pTail;
-};
-
 void printList(struct Node *node) //This will print the whole current list
 {
   while (node != NULL)
@@ -44,13 +38,11 @@ void deleteNode(struct Node **head_ref, int key)
         free(temp);               // free old head
         return;
     }
-
     while (temp != NULL && temp->data != key)
     {
         prev = temp;
         temp = temp->pNext;
     }
-
     // If key was not present in linked list
     if (temp == NULL) return;
     // Unlink the node from linked list
@@ -60,22 +52,9 @@ void deleteNode(struct Node **head_ref, int key)
 
 int main()
 {
-    struct List* size = 0; //Define the head node
-    struct List* pHead = NULL;
-    struct List* pTail = NULL;
     struct Node* head = NULL;
-    pHead = (struct List*)malloc(sizeof(struct List)); //Size allocation for head
-    //addNodeBottom(25, pHead);
     int n;
     char choice;
-
-//    printf("Please enter an option:\n");
-//    printf("'A' Make new list:\n");
-//    printf("'B' Add nodes to existing list:\n");
-//    printf("'C' Delete nodes from existing list:\n");
-//    printf(" or q to exit the program...\n");
-//    scanf("%c", &choice);
-
     do {
         printf("Please enter an option:\n");
         printf("'A' Make new list:\n");
