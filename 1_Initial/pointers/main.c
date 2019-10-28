@@ -1,20 +1,32 @@
 #include <stdio.h>
+#include <string.h>
+
+char tracks[][80] =
+{
+    "i left heart in the school",
+    "hello hello can you hear me",
+    "can't get you out of my head",
+    "from here to maternity",
+    "in the end it doesn't even matter",
+};
+
+void find_track(char search_for[])
+{
+    int i;
+    for (i=0; i<5; i++)
+    {
+        if(strstr(tracks[i], search_for))
+        {
+            printf("Track %i: '%s' \n",i,tracks[i]);
+        }
+    }
+}
 
 int main()
 {
-
-    /*
-    int doses[] = {1, 3, 2, 1000};
-    printf("Issue doses %i", 3[doses]);
-    return 0;
-    */
-    char cards[] = "JQK";
-    char a_card = cards[2];
-    cards[2] = cards[1];
-    cards[1] = cards[0];
-    cards[0] = cards[2];
-    cards[2] = cards[1];
-    cards[1] = a_card;
-    puts(cards);
+    char search_for[80];
+    printf("Search for: ");
+    fgets(search_for, 80, stdin);
+    find_track(search_for);
     return 0;
 }
