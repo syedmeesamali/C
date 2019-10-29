@@ -50,26 +50,25 @@ void deleteNode(struct Node **head_ref, int key)
     free(temp);  // Free memory
 }
 
-int main()
+int main(void)
 {
     struct Node* head = NULL;
-    int n;
+    int n, num, del;
     char choice;
-    do {
-        printf("Please enter an option:\n");
+    while(1)
+    {
+        printf("\nPlease enter an option:\n");
         printf("'A' Make new list:\n");
         printf("'B' Add nodes to existing list:\n");
         printf("'C' Delete nodes from existing list:\n");
         printf(" or q to exit the program...\n");
         scanf("%c", &choice);
-
-        switch(choice)
-        {
+        if (choice=='q' || choice=='Q')
+            break;
+        switch(choice) {
             case 'A':
-            {
                 printf("\nInput the number of nodes:\n");
                 scanf("%d", &n);
-                int num;
                 while (n > 0)
                 {
                     printf("\nEnter node value for node # %d\n", n);
@@ -80,32 +79,25 @@ int main()
                 printf("\nCreated linked list is:\n");
                 printList(head);
                 break;
-            }
             case 'B':
-            {
-                    int num;
-                    printf("\nEnter node value to be added\n");
-                    scanf("%d", &num);
-                    addNode(&head, num);
-
+                printf("\nEnter node value to be added\n");
+                scanf("%d", &num);
+                addNode(&head, num);
                 printf("\nUpdated linked list is:\n");
                 printList(head);
                 break;
-            }
             case 'C':
-            {
-                    int del;
-                    printf("\nEnter node value to be deleted\n");
-                    scanf("%d", &del);
-                    deleteNode(&head, del);
-
+                printf("\nEnter node value to be deleted\n");
+                scanf("%d", &del);
+                deleteNode(&head, del);
                 printf("\nUpdated linked list is:\n");
                 printList(head);
                 break;
-            }
+            default:
+                printf("\nEnter from choice below\n");
+                continue;
         } //End of switch case
-      } while (choice != 'q');
-    //End of main while loop
-
-	return 0;
+        printf("\nOutput done...\n");
+    }
+	return (0);
 }
