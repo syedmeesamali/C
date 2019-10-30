@@ -1,37 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void copystr(to, from)
-char to[], from[];
-{
-    int i=0;
-    while (from[i])
-    {
-        to[i] = from[i];
-        ++i;
-    }
-    to[i] = '\0';
-}
-
-void copy2(to, from)
-char *to, *from;
-{
-    while(*from)
-    {
-        *to = *from;
-        ++from;
-        ++to;
-    }
-    *to = '\0';
-}
-
 int main()
 {
-    char *str1 = "string one";
-    static char str2[] = { "string two" };
-    char buf[80];
-    copystr(buf, str2);
-    printf("%s\n", buf);
+    int myarr[] = {1,2,3,4};
+    int *my_ptr;        //Pointer for array (default start is start of array)
+
+    for (my_ptr = myarr; my_ptr <= &myarr[3]; ++my_ptr)
+        printf("%d ", *my_ptr);
+
+    static char word[] = { "meesam ali" };
+    char *char_ptr;
+    for (char_ptr = word; *char_ptr != '\0'; ++char_ptr)
+    {
+        printf("%c\n", *char_ptr);
+    }
 
     return 0;
 }
