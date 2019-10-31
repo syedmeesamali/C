@@ -1,20 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+struct listrec
+{
+    int value;
+    struct listrec *next;
+};
+
 int main()
 {
-    int myarr[] = {1,2,3,4};
-    int *my_ptr;        //Pointer for array (default start is start of array)
-
-    for (my_ptr = myarr; my_ptr <= &myarr[3]; ++my_ptr)
-        printf("%d ", *my_ptr);
-
-    static char word[] = { "meesam ali" };
-    char *char_ptr;
-    for (char_ptr = word; *char_ptr != '\0'; ++char_ptr)
-    {
-        printf("%c\n", *char_ptr);
-    }
-
+    struct listrec x1, x2;
+    x1.value = 100;
+    x1.next = &x2;      //Link x1 and x2
+    x2.value = 150;
+    x2.next = NULL;
+    printf("%d %d", x1.value, x2.value);
     return 0;
 }

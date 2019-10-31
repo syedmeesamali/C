@@ -62,7 +62,7 @@ int main(void)
         printf("'B' Add nodes to existing list:\n");
         printf("'C' Delete nodes from existing list:\n");
         printf(" or q to exit the program...\n");
-        scanf("%c", &choice);
+        scanf(" %c", &choice);
         if (choice=='q' || choice=='Q')
             break;
         switch(choice) {
