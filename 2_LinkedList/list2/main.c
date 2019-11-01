@@ -7,6 +7,18 @@ struct listrec
     struct listrec *next;
 };
 
+struct listrec *search(listptr, match)
+struct listrec *listptr;
+int match;
+{
+    while(listptr != (struct listrec *) NULL)
+        if(listptr -> value == match)
+            break;
+        else
+            listptr = listptr -> next;
+    return (listptr);
+}
+
 int main()
 {
     struct listrec x1, x2;
