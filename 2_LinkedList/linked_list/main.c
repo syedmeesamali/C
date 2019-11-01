@@ -27,6 +27,19 @@ void addNode(struct Node** head_ref, int new_data) //Add a node to end of list
     (*head_ref) = new_node;
 }
 
+void insertAfter(struct Node* prev_node, int new_data)
+{
+    if (prev_node == NULL)
+    {
+        printf("\nPrevious cannot be null");
+        return;
+    }
+    struct Node* new_node = (struct Node*) malloc(sizeof(struct Node));
+    new_node -> data = new_data;
+    new_node -> pNext = prev_node -> pNext;
+    prev_node -> pNext = new_node;
+}
+
 void deleteNode(struct Node **head_ref, int key)
 {
     // Store head node
@@ -53,7 +66,7 @@ void deleteNode(struct Node **head_ref, int key)
 int main(void)
 {
     struct Node* head = NULL;
-    int n, num, del;
+    int n, num, del, aftr, val;
     char choice;
     while(1)
     {
@@ -61,6 +74,7 @@ int main(void)
         printf("'A' Make new list:\n");
         printf("'B' Add nodes to existing list:\n");
         printf("'C' Delete nodes from existing list:\n");
+        printf("'D' Insert node after a node (n):\n");
         printf(" or q to exit the program...\n");
         scanf(" %c", &choice);
         if (choice=='q' || choice=='Q')
@@ -90,6 +104,13 @@ int main(void)
                 printf("\nEnter node value to be deleted\n");
                 scanf("%d", &del);
                 deleteNode(&head, del);
+                printf("\nUpdated linked list is:\n");
+                printList(head);
+                break;
+            case 'D':
+                printf("\nEnter after which node to insert and node value\n");
+                scanf("%d %d", &aftr, &val);
+                insertAfter(aftr, val);
                 printf("\nUpdated linked list is:\n");
                 printList(head);
                 break;
