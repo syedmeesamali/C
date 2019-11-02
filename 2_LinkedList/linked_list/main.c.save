@@ -26,16 +26,17 @@ void addNode(node_t** head_ref, int new_data) //Add a node to end of list
     (*head_ref) = new_node;
 }
 
-void insertAfter(node_t* prev_node, int new_data)
+void insertAfter(node_t** prev_node, node_t* new_data)
 {
     if (prev_node == NULL)
     {
         printf("\nPrevious cannot be null");
         return;
     }
-    struct Node* new_node = (struct Node*) malloc(sizeof(struct Node));
-    new_node->data  = new_data;
-    prev_node->next = new_node;
+    node_t new_node = (struct Node*) malloc(sizeof(struct Node));
+    new_node -> data = new_data;
+    new_node -> next = (*prev_node) -> next;
+    (*prev_node) -> next = new_node;
 }
 
 void deleteNode(struct Node **head_ref, int key)

@@ -1,35 +1,25 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void copystr(to, from)
-char to[], from[];
+typedef struct node
 {
-    int i=0;
-    while (from[i])
-    {
-        to[i] = from[i];
-        ++i;
-    }
-    to[i] = '\0';
-}
+    int value;
+    struct node *next;
+} node;
 
-void copy2(to, from)
-char *to, *from;
-{
-    while(*from)
-    {
-        *to = *from;
-        ++from;
-        ++to;
-    }
-    *to = '\0';
-}
+node * createList(int n);
 
 int main()
 {
-    char *str1 = "string one";
-    static char str2[] = { "string two" };
-    char buf[80];
-    copystr(buf, )
+    int n = 0;
+    node * head = NULL;
+    printf("\nHow many nodes? ");
+    scanf("%d", &n);
     return 0;
+}
+
+node * createList(int n)
+{
+    int i = 0;
+    node * head = 
 }

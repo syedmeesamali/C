@@ -1,31 +1,34 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct listrec
+typedef struct node
 {
     int value;
-    struct listrec *next;
-};
+    struct node *next;
+} node;
 
-struct listrec *search(listptr, match)
-struct listrec *listptr;
-int match;
-{
-    while(listptr != (struct listrec *) NULL)
-        if(listptr -> value == match)
-            break;
-        else
-            listptr = listptr -> next;
-    return (listptr);
-}
+node * createList(int n);
 
 int main()
 {
-    struct listrec x1, x2;
-    x1.value = 100;
-    x1.next = &x2;      //Link x1 and x2
-    x2.value = 150;
-    x2.next = NULL;
-    printf("%d %d", x1.value, x2.value);
+    int n = 0;
+    node * head = NULL;
+    printf("\nHow many nodes? ");
+    scanf("%d", &n);
     return 0;
+}
+
+node * createList(int n)
+{
+    int i = 0;
+    node * head = NULL;
+    node * temp = NULL;
+    node * p = NULL;
+    for (i=0; i<n; i++)
+    {
+        temp = (node*)malloc(sizeof(node));
+        printf("\nEnter data for node: ");
+        scanf("%d", &(temp->data));
+        temp->next = NULL;
+    }
 }
