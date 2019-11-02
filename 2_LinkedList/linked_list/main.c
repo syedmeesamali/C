@@ -3,31 +3,30 @@
 
 struct Node {
 	int data;
-	struct Node* pNext;
+	struct Node* next;
 };
 
-void printList(struct Node *node) //This will print the whole current list
+typedef struct Node node_t;
+
+void printList(node_t *node) //This will print the whole current list
 {
   while (node != NULL)
   {
      printf(" %d ", node->data);
-     node = node->pNext;
+     node = node->next;
   }
+  printf("\n");
 }
 
-void addNode(struct Node** head_ref, int new_data) //Add a node to end of list
+void addNode(node_t** head_ref, int new_data) //Add a node to end of list
 {
-    /* 1. allocate node */
     struct Node* new_node = (struct Node*) malloc(sizeof(struct Node));
-    /* 2. put in the data  */
     new_node->data  = new_data;
-    /* 3. Make next of new node as head */
-    new_node->pNext = (*head_ref);
-    /* 4. move the head to point to the new node */
+    new_node->next = (*head_ref);
     (*head_ref) = new_node;
 }
 
-void insertAfter(struct Node* prev_node, int new_data)
+void insertAfter(node_t** prev_node, node_t* new_data)
 {
     if (prev_node == NULL)
     {
@@ -36,30 +35,28 @@ void insertAfter(struct Node* prev_node, int new_data)
     }
     struct Node* new_node = (struct Node*) malloc(sizeof(struct Node));
     new_node -> data = new_data;
-    new_node -> pNext = prev_node -> pNext;
-    prev_node -> pNext = new_node;
+    new_node -> next = (*prev_node) -> next;
+    (*prev_node) -> next = new_node;
 }
 
 void deleteNode(struct Node **head_ref, int key)
 {
-    // Store head node
     struct Node* temp = *head_ref, *prev;
-    // If head node itself holds the key to be deleted
     if (temp != NULL && temp->data == key)
     {
-        *head_ref = temp->pNext;   // Changed head
+        *head_ref = temp->next;   // Changed head
         free(temp);               // free old head
         return;
     }
     while (temp != NULL && temp->data != key)
     {
         prev = temp;
-        temp = temp->pNext;
+        temp = temp->next;
     }
     // If key was not present in linked list
     if (temp == NULL) return;
     // Unlink the node from linked list
-    prev->pNext = temp->pNext;
+    prev->next = temp->next;
     free(temp);  // Free memory
 }
 
@@ -109,7 +106,7 @@ int main(void)
                 break;
             case 'D':
                 printf("\nEnter after which node to insert and node value\n");
-                scanf("%d %d", &aftr, &val);
+                scanf("%d, %d", &aftr, &val);
                 insertAfter(aftr, val);
                 printf("\nUpdated linked list is:\n");
                 printList(head);
