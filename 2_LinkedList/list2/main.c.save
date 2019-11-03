@@ -21,5 +21,24 @@ int main()
 node * createList(int n)
 {
     int i = 0;
-    node * head = 
+    node * head = NULL;
+    node * temp = NULL;
+    node * p = NULL;
+    for (i=0; i<n; i++)
+    {
+        temp = (node*)malloc(sizeof(node));
+        printf("\nEnter data for node: ");
+        scanf("%d", &(temp->data));
+        temp->next = NULL;
+
+        if (head == NULL)
+        {
+            head = temp;
+        } else {
+            p = head;
+            
+        }
+
+    }
+
 }
