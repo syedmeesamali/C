@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1572847338 source:c:\users\cclgulf\desktop\c\3_structs_ptrs\json_tool\main.c
+	<stdio.h>
+	<stdlib.h>
+
