@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1573236245 source:c:\users\syed\desktop\c\2_linkedlist\first_win\main.cpp
+	<windows.h>
+
+1514140582 source:c:\users\syed\desktop\c\2_linkedlist\first_win\resource.rc
+	<windows.h>
+	<commctrl.h>
+	<richedit.h>
+	"resource.h"
+
+1514140582 c:\users\syed\desktop\c\2_linkedlist\first_win\resource.h
+
