@@ -26,7 +26,7 @@ void addNode(node_t** head_ref, int new_data) //Add a node to end of list
     (*head_ref) = new_node;
 }
 
-void insertAfter(node_t* prev_node, int new_data)
+void insertAfter(struct Node* prev_node, int new_data)
 {
     if (prev_node == NULL)
     {
@@ -62,7 +62,8 @@ void deleteNode(struct Node **head_ref, int key)
 int main(void)
 {
     struct Node* head = NULL;
-    int n, num, del, aftr, val;
+    struct Node* aftr = NULL;
+    int n, num, del, val;
     char choice;
     while(1)
     {
@@ -106,7 +107,7 @@ int main(void)
             case 'D':
                 printf("\nEnter after which node to insert and node value\n");
                 scanf("%d, %d", &aftr, &val);
-                insertAfter(aftr, val);
+                insertAfter(&aftr, val);
                 printf("\nUpdated linked list is:\n");
                 printList(head);
                 break;
