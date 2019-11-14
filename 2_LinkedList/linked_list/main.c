@@ -35,6 +35,7 @@ void insertAfter(struct Node* prev_node, int new_data)
     }
     struct Node* new_node = (struct Node*) malloc(sizeof(struct Node));
     new_node->data  = new_data;
+    new_node->next = prev_node->next;
     prev_node->next = new_node;
 }
 
