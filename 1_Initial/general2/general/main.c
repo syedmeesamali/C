@@ -1,18 +1,37 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
-
-int main(int argc, char *argv[])
+int main()
 {
-    int ans = 0;
-    if (argc != 2)
+    int i,j,N,M;
+    float a[100][100], b[100][100];
+    printf("Enter the size of matrix \n");
+    scanf("%d %d", &N, &M);
+    for (i=1; i<=N; i++)
     {
-        fprintf(stderr, "Enter two arguments pls!");
-        return 1;
+        for (j=1; j<=M; j++)
+        {
+            printf("Insert item for [%d] row and [%d] col: ", i, j);
+            scanf("%f", &a[i][j]);
+        }
     }
-    printf("argv[0] = %s", argv[0]);
-    printf("argv[1] = %s", argv[1]);
-    printf("\nSum is: %d", ans);
+    printf("\nMatrix transpose will be as below:");
+    for (j=1; j<=M; j++)
+    {
+        for (i=1; i<=N; i++)
+        {
+            b[j][i] = a[i][j];
+        }
+    }
+
+    for (i=1; i<=N; i++)
+    {
+        for (j=1; j<=M; j++)
+        {
+            printf("%f | ", b[i][j]);
+        }
+    }
     return 0;
 }
+
+
+
