@@ -11,7 +11,6 @@ int main()
     }
     return 0;
 }
-
 int power(int base, int n)
 {
     int i, p;
@@ -22,6 +21,7 @@ int power(int base, int n)
     }
     return p;
 }*/
+#define _GNU_SOURCE
 
 int strlen(char *s)
 {
@@ -30,14 +30,23 @@ int strlen(char *s)
     {
         n++;
     }
-    return n;
+    return n-1;
 }
-
-int main()
+int main(void)
 {
-    char a[10];
+    /*char a[10];
     printf("Enter a word: ");
     fgets(a, sizeof(a), stdin);
-    printf("\nWord %s has %d chars:", a, strlen(a));
+    printf("\nWord %s has %d chars:", a, strlen(a));*/
+    size_t input_size = 0;
+    char* input_line = NULL;
+    if (getline(&input_line, &input_size, stdin) == -1)
+    {
+        free(input_line);
+        perror("Failed to read input!");
+        return EXIT_FAILURE;
+    }
+    printf("Got input: %s\n", input_line);
+    free(input_line);
     return 0;
 }
