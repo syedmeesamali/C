@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1575546665 source:c:\users\cclgulf\desktop\c\3_structs_ptrs\simple_stuff\main.c
+	<stdio.h>
+	<stdlib.h>
+
