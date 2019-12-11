@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int strlen(char *s)
+{
+    int n;
+    for (n=0; *s != '\0'; s++)
+    {
+        n++;
+    }
+    return n;
+}
+int main()
+{
+    char a;
+    printf("Enter some word!");
+    scanf("%c", &a);
+    printf("Length of string %c is %d: ", a, strlen(a));
+    return 0;
+}
+
