@@ -17,13 +17,8 @@ int main()
 
     for (i=0; i<20; i++)
     {
-        if (name[i] != '\0')
-        {
-            printf("%c = %p\n", name[i], &name[i]);
-        } else
-        {
-            return;
-        }
+        if 
+        printf("%c = %p\n", name[i], &name[i]);
     }
     return 0;
 }
