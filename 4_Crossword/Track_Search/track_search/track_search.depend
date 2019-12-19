@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1576740741 source:f:\repos\c\4_crossword\track_search\track_search\main.c
+	<stdio.h>
+	<string.h>
+
