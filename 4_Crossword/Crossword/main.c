@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 int main()
 {
@@ -12,6 +13,12 @@ int main()
                           "O L K O D T",
                           "Z L I L E M",
                           };
+    //Below is a list to be searched within main cross-board letters
+    char search[4] ={"LOVE",
+                      "ISI",
+                      "GIVE",
+                      "NO",
+                      };
     for (m=0; m<11; m++)
     {
         for (n=0; n<11; n++)
