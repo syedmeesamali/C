@@ -14,16 +14,29 @@ int main()
                           "Z L I L E M",
                           };
     //Below is a list to be searched within main cross-board letters
-    char search[4] ={"LOVE",
-                      "ISI",
-                      "GIVE",
-                      "NO",
+    char search[9][4] ={"L O V E",
+                      "I S I",
+                      "G I V E",
+                      "N O",
                       };
+    //First loop to print the original list
     for (m=0; m<11; m++)
     {
         for (n=0; n<11; n++)
         {
             printf("%c", matrix[m][n]);
+        }
+        printf("\n");
+    }
+    //This is the search list
+    for (m=0; m<11; m++)
+    {
+        for (n=0; n<11; n++)
+        {
+            if (strstr(matrix[m][n], search[m][n]))
+            {
+                printf("Found match at %d, %d", m, n);
+            }
         }
         printf("\n");
     }
