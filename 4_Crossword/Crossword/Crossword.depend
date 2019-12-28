@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1577571094 source:c:\users\syed\desktop\c\4_crossword\crossword\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
