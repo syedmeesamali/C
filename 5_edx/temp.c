@@ -20,11 +20,11 @@ int main(void)
 	if (unit == 'C')
 	{
 		//Function to calculate the fahrenheit
-		printf("Temp in C is %0.2f\n", degToF(userTemp));
+		printf("Temp in F is %0.2f\n", degToF(userTemp));
 	} else if (unit == 'F')
 	{
 		//Function for Centigrade calculation
-		printf("Temp in F is %0.2f\n", FtoDeg(userTemp));
+		printf("Temp in C is %0.2f\n", FtoDeg(userTemp));
 	}
 	return 0;
 } //End of main
