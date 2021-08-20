@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1629488744 source:d:\repos\c\8_mechatronics\pointers_01\main.c
+	<stdio.h>
+	<stdlib.h>
+
