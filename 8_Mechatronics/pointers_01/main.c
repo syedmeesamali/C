@@ -1,21 +1,16 @@
 #include <stdio.h>
-#include <stdlib.h>
 
 int main()
 {
-    int a;
+    int a = 1025;
     int *p;
-    a = 10;
-    p = &a; //&a is the address of a
-    printf("Address of p: %d \n", p);
-    printf("Value at p is: %d \n", *p);       //Value at address pointed at by p
-    int b = 20;
-    *p = b;
-    printf("Address of p: %d \n", p);
-    printf("Address of p+1 is: %d \n", p+1);
-    printf("Value at p is: %d \n", *p);       //Value at address pointed at by p
-    printf("Size of int is: %d \n", sizeof(int));
-    //So the value of ADDRESS is NOT changed but the value of POINTED TO is changed
-
+    p = &a;     //&a is the address of a
+    printf("Address = %d, Value = %d \n", p, *p);
+    printf("Address + 1 = %d, Value + 1 = %d \n", p+1, *(p+1));
+    char *p0;
+    p0 = p;         //p0 pointer to same address as p but as char it contains one byte
+    printf("Char Address = %d, Value = %d \n", p0+1, *p0);
+    printf("Char Address + 1 = %d, Value + 1 = %d \n", p0+1, *(p0+1));
+    //1025 = 0000 0000 0000 0000 0000 0100 0000 0001
     return 0;
 }
