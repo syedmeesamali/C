@@ -5,8 +5,11 @@ int main()
     int a = 1025;
     int *p;
     p = &a;     //&a is the address of a
+    int **q;
+    q = &p;
     printf("Address = %d, Value = %d \n", p, *p);
     printf("Address + 1 = %d, Value + 1 = %d \n", p+1, *(p+1));
+    printf("Address pointer = %d, Value = %d \n", q, *(*(q)));
     char *p0;
     p0 = p;         //p0 pointer to same address as p but as char it contains one byte
     printf("Char Address = %d, Value = %d \n", p0+1, *p0);
