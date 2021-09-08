@@ -1,5 +1,5 @@
 #include <stdio.h>
-void print(const char *c) //Const is used to force the imutability
+void print(const char *c)
 {
     while (*c != '\0')
     {
@@ -9,27 +9,28 @@ void print(const char *c) //Const is used to force the imutability
     printf("\n");
 }
 
-int count_e(char *d) //Const is used to force the imutability
+//Count particular character
+void count_e(char *d)
 {
-    int count;
+    int count = 0;
     while (*d != '\0')
     {
         if (*d == 'e')
         {
             count++;
-            printf("%c", *d);
+            printf("%d e is %c\n", count, *d);
         }
         d++;
     }
     printf("\n");
-    return count;
+    printf("Count of e is %d", count);
 }
 
 
 int main()
 {
-    char string[] = "some String!";
+    char string[] = "some Streeeng!";
     print(string);
-    printf("\n Count of e is %d!", count_e(string));
+    count_e(string);
     return 0;
 }
