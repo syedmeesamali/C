@@ -1,10 +1,12 @@
 #include<windows.h>
 #include<stdio.h>
-
-int main()
+int WINAPI WinMain(HINSTANCE hinstance, HINSTANCE hPrevInstance, LPSTR pCmdLine, int nCmdShow)
 {
-    HANDLE hComm;
-    hComm = CreateFileA("\\\\.\\COM3", GENERIC_READ | GENERIC_WRITE,
+ 	wchar_t b[] = L"wide-char";
+	wchar_t b_cap[] = L"Wide";
+	MessageBoxW(NULL, b, b_cap, MB_OK);
+	HANDLE hComm;
+    hComm = CreateFileA("\\\\.\\COM4", GENERIC_READ | GENERIC_WRITE,
                         0,                      //No sharing
                         NULL,                   //No security
                         OPEN_EXISTING,          //Open existing ports only
