@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1631805016 source:d:\repos\c\8_mechatronics\com\com_conn\main.c
+	<windows.h>
+	<stdio.h>
+
