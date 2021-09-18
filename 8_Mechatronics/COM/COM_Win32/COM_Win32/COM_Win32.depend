@@ -1,6 +1,0 @@
-# depslib dependency file v1.0
-1631908070 source:d:\repos\c\8_mechatronics\com\com_win32\com_win32\main.cpp
-	<tchar.h>
-	<windows.h>
-	<stdio.h>
-
