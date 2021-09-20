@@ -19,6 +19,13 @@ int WINAPI WinMain(HINSTANCE hinstance, HINSTANCE hPrevInstance, LPSTR pCmdLine,
     {
         printf("Port opened successfully!");
     }
+
+    Status = WriteFile(hComm,               //Handle to serial port
+                       lpBuffer,            //Data to be written at port
+                       dNoOFBytestoWrite,   //Bytes to be written
+                       &dNoOfBytesWritten,  //Bytes actually written
+                       NULL)
+
     CloseHandle(hComm);     //Close the serial port
     return 0;
 }
