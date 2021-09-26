@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1632658040 source:d:\repos\c\9_win32\win98\main.cpp
+	<tchar.h>
+	<windows.h>
+
