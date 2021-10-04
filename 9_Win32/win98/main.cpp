@@ -77,7 +77,6 @@ int WINAPI WinMain (HINSTANCE hThisInstance,
 
 
 /*  This function is called by the Windows function DispatchMessage()  */
-
 LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     HDC             hdc;
@@ -86,12 +85,17 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
 
     switch (message)                  /* handle the messages */
     {
+    //Paint the whole windows to screen
     case WM_PAINT:
         hdc = BeginPaint(hwnd, &ps);
         GetClientRect(hwnd, &rect);
         DrawText(hdc, TEXT("Hello win98 again!"), -1, &rect, DT_SINGLELINE | DT_CENTER | DT_VCENTER);
         EndPaint(hwnd, &ps);
         break;
+    //When close button is pressed - destroy the shown windows
+    case WM_DESTROY:
+        PostQuitMessage(0);
+        return 0;
     default:                      /* for messages that we don't deal with */
         return DefWindowProc (hwnd, message, wParam, lParam);
     }
