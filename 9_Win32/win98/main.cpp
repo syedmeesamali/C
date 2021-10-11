@@ -45,7 +45,7 @@ int WINAPI WinMain (HINSTANCE hThisInstance,
 
     /* The class is registered, let's create the program*/
     hwnd = CreateWindowEx (
-           0,                   /* Extended possibilites for variation */
+           0,                   /* Extended possibilities for variation */
            szClassName,         /* Classname */
            _T("Template Windows App"),       /* Title Text */
            WS_OVERLAPPEDWINDOW, /* default window */
@@ -87,9 +87,9 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
     {
     //Paint the whole windows to screen
     case WM_PAINT:
-        hdc = BeginPaint(hwnd, &ps);
+        hdc = BeginPaint(hwnd, &ps); //ps is a pointer to struct called as PAINTSTRUCT
         GetClientRect(hwnd, &rect);
-        DrawText(hdc, TEXT("Hello win98 again!"), -1, &rect, DT_SINGLELINE | DT_CENTER | DT_VCENTER);
+        DrawText(hdc, TEXT("Hello windows GUI again!"), -1, &rect, DT_SINGLELINE | DT_CENTER | DT_VCENTER);
         EndPaint(hwnd, &ps);
         break;
     //When close button is pressed - destroy the shown windows
