@@ -36,7 +36,7 @@ int WINAPI WinMain (HINSTANCE hThisInstance,
     wincl.lpszMenuName = NULL;                 /* No menu */
     wincl.cbClsExtra = 0;                      /* No extra bytes after the window class */
     wincl.cbWndExtra = 0;                      /* structure or the window instance */
-    /* Use Windows's default colour as the background of the window */
+    /* Use Windows's default color as the background of the window */
     wincl.hbrBackground = (HBRUSH) COLOR_BACKGROUND;
 
     /* Register the window class, and if it fails quit the program */
@@ -86,6 +86,8 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
     switch (message)                  /* handle the messages */
     {
     //Paint the whole windows to screen
+    case WM_CREATE:     //As of now nothing particular here
+        return 0;
     case WM_PAINT:
         hdc = BeginPaint(hwnd, &ps); //ps is a pointer to struct called as PAINTSTRUCT
         GetClientRect(hwnd, &rect);
