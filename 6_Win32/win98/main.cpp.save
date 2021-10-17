@@ -62,10 +62,9 @@ LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT message, WPARAM wParam, LPARAM 
     //Paint the whole windows to screen
     case WM_LBUTTONDOWN:
         {
-            wchar_t szFileName[MAX_PATH];
+            char szFileName[MAX_PATH];
             HINSTANCE hInstance = GetModuleHandle(NULL);
-            GetModuleFileName(hInstance, szFileName, MAX_PATH);
-            MessageBox(hwnd, szFileName, TEXT("This program is .. !"), MB_OK | MB_ICONINFORMATION);
+            GetModuleFileName(hInstance, )
         }
         break;
     case WM_CREATE:     //As of now nothing particular here
