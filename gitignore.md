@@ -1,5 +1,7 @@
 # Prerequisites
 *.d
+*.exe
+
 
 # Object files
 *.o
@@ -29,7 +31,6 @@
 *.dylib
 
 # Executables
-*.exe
 *.out
 *.app
 *.i*86
