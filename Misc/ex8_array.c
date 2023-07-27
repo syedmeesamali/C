@@ -11,17 +11,20 @@ int main(void){
     int ing = 0;
     scanf("%d", &ing);
     int i = 0;
-    int totalPrice = 0;
-    printf("%d ingredients\d", ing);
+    printf("\n");
+    float totalPrice = 0;
+    printf("Total %d ingredients\n", ing);
     int kgs[ing];
     int price[ing];
     for (i = 0; i < ing; i++)
     {
         scanf("%d", &price[i]);
+        printf("price ... %d\n", price[i]);
     }
     for (i = 0; i < ing; i++)
     {
         scanf("%d", &kgs[i]);
+        printf("kgs ... %d\n", kgs[i]);
     }
     for (i = 0; i < ing; i++)
     {
