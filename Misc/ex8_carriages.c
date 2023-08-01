@@ -12,26 +12,22 @@ int main(void)
 {
     int boxes = 0;
     scanf("%d", &boxes);
-    printf("\n");
     double weights[boxes];
     double totWt = 0;
     double avgWt = 0;
     double printWt = 0;
-    printf("Total %d boxes\n", boxes);
+    double readVal = 0.0;
     for (int i=0; i<boxes; i++)
     {
-        printf("Enter weight of box # %d: ", i+1);
-        scanf("%.2lf", &weights[i]);
+        scanf("%lf", &readVal);
+        weights[i] = readVal;
         totWt += weights[i];
     }
     avgWt = totWt / boxes;
-
     for (int i=0; i<boxes; i++)
     {
         printWt = avgWt - weights[i];
-        printf("Weight 1 distributed is: %.2lf\n", printWt);
+        printf("%.1lf\n", printWt);
     }
-    printf("--- End of program ----");
-
     return 0;
 }
