@@ -10,27 +10,23 @@ then display it with 6 decimal places.
 int main(void){
     int ing = 0;
     scanf("%d", &ing);
-    int i = 0;
     printf("\n");
-    float totalPrice = 0;
-    printf("Total %d ingredients\n", ing);
-    int kgs[ing];
-    int price[ing];
-    for (i = 0; i < ing; i++)
+    double totalPrice = 0;
+    double kgs[ing];
+    double price[ing];
+    for (int i = 0; i < ing; i++)
     {
-        scanf("%d", &price[i]);
-        printf("price ... %d\n", price[i]);
+        scanf("%lf", &price[i]);
     }
-    for (i = 0; i < ing; i++)
+    for (int i = 0; i < ing; i++)
     {
-        scanf("%d", &kgs[i]);
-        printf("kgs ... %d\n", kgs[i]);
+        scanf("%lf", &kgs[i]);
     }
-    for (i = 0; i < ing; i++)
+    for (int i = 0; i < ing; i++)
     {
-        totalPrice += price[i] * kgs[i];
+        totalPrice = totalPrice + price[i] * kgs[i];
     }
-    printf("Total price is %f", totalPrice);
+    printf("%lf", totalPrice);
 
     return 0;
 }
