@@ -1,12 +1,12 @@
 #include <stdio.h>
 int main(void) {
     int diceValue = 0;
-    int notSix;
+    int numThrows = 0;
     scanf("%d", &diceValue);
-    notSix = diceValue != 6;
-    while(notSix){
+    while(diceValue != 6){
         scanf("%d", &diceValue);
-        notSix = diceValue != 6;
+        numThrows++;
     }
+    printf("%d throws to get 6", numThrows + 1);
     return 0;
 }
