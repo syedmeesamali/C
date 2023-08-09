@@ -23,12 +23,15 @@ int main(void)
     while (temp != -999)
     {
         scanf("%d", &temp);
-        if (temp >= minSafe && temp <= maxSafe)
+        if ((temp >= minSafe && temp <= maxSafe))
         {
             printf("nothing to report\n");
-        } else
+        } else if ((temp < minSafe) && (temp != -999))
         {
             printf("Alert!\n");
+            break;
+        } else
+        {
             break;
         }
     }
