@@ -1,6 +1,7 @@
 # Prerequisites
 *.d
 *.exe
+*.o
 
 
 # Object files
@@ -51,3 +52,4 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+Misc/*.exe
