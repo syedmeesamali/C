@@ -3,18 +3,32 @@
 */
 
 #include <stdio.h>
-int main(void)
-{
-    char word[50];
+int main(void) {
     int i = 0;
-    printf("Enter a word: ");
-    scanf("%s", word);
-    while (word[i] != '\0')
+    int t = 0;
+    int l = 0;
+    int j = 0;
+    int nbWords = 0;
+    char word[11];
+    int length[10];             //length[5] number of 5-letter-long words in the text
+    for(i=0;i<10;i++)
     {
-        printf("word[%d] = %c\n", i, word[i]);
-        i++;
+        length[i]=0;
     }
-    printf("\nWord length is %d", i);
-
+    scanf("%d", &nbWords);      //Number of words
+    for(t=0; t<nbWords; t++)
+    {
+        scanf("%s", word);
+        l = 0;
+        while(word[l]!='\0')
+        {
+            l++;
+        }
+        length[l] = length[l] + 1;
+    }
+    for(j=0; j<10; j++)
+    {
+        printf("There are %d words with %d letters.\n", length[j], j);
+    }
     return 0;
 }
