@@ -13,16 +13,31 @@ int main(void)
     char word[50];
     int i = 0;
     int count = 0;
+    int t_Index = 0;
+    int yes = 0;
     scanf("%s", word);
     while (word[i] != '\0')
     {
-        count++;
         if (word[i] == 't' || word[i] == 'T')
         {
-            printf("t/T at %d\n", i+1);
+            yes = 1;
+            t_Index = i;
         }
-        printf("%d _ %c\n", i+1, word[i]);
+        count++;
         i++;
+    }
+    if (yes)
+    {
+        if (t_Index <= (count / 2))
+        {
+            printf("1");
+        } else
+        {
+            printf("2");
+        }
+    } else
+    {
+        printf("-1");
     }
     return 0;
 }
