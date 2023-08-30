@@ -10,21 +10,55 @@ has no more than 50 letters, and that the word is all lowercase.
 int main(void)
 {
     char word[50];          //Input word from user
+    char sorted[50];        //Final sorted word
     scanf("%s", word);      //Read the word
-    int pos = 0;            //Starting position of word
-    int i = 0;
+    int i = 0, j = 0;
+    int len = 0;
     int count = 0;
+    int check_count = 0;
     char c = 0;
-    char d = 0;
+    int letter_count = 0;
+
+    //First let's get length of word
     while (word[i] != '\0')
     {
-        c = word[i];
-        d = word[i+1];
+        sorted[i] = word[i];
+        len++;
         i++;
-        if (c == d)
+    }
+
+    //Bubble sort the word
+    for (j=0; j<len-1; j++)
+    {
+        for (i=0; i<len-1; i++)
         {
-            count++;
+            if (sorted[i] > sorted[i+1])
+            {
+                c = sorted[i];
+                sorted[i] = sorted[i+1];
+                sorted[i+1] = c;
+            }
         }
+    }
+
+    //printf("new string is: %s\n", sorted);
+    i = 0;
+    //Now check for the letter repetitions
+    while (sorted[i] != '\0')
+    {
+
+        letter_count++;
+
+        if (sorted[i] == sorted[i+1])
+        {
+            check_count++;
+            if (check_count == 2)
+            {
+                check_count = 0;
+                count++;
+            }
+        }
+        i++;
     }
     printf("%d", count);
     //printf("\a");           //Bell sound
