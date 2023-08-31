@@ -6,6 +6,8 @@ sure to then skip ahead far enough so that letters that occur more than twice ar
 has no more than 50 letters, and that the word is all lowercase.
 */
 
+//Ref checks: erroneousnesses - Result = 5
+
 #include <stdio.h>
 int main(void)
 {
@@ -18,6 +20,7 @@ int main(void)
     int check_count = 0;
     char c = 0;
     int letter_count = 0;
+    int characterCount[26] = {0};
 
     //First let's get length of word
     while (word[i] != '\0')
@@ -41,24 +44,24 @@ int main(void)
         }
     }
 
-    //printf("new string is: %s\n", sorted);
-    i = 0;
-    //Now check for the letter repetitions
-    while (sorted[i] != '\0')
+    //Now count characters in a sequence
+    for (j = 0; sorted[j] != '\0'; j++)
     {
-
-        letter_count++;
-
-        if (sorted[i] == sorted[i+1])
+        c = sorted[j];
+        if (c >= 'a' && c <= 'z')
         {
-            check_count++;
-            if (check_count == 2)
-            {
-                check_count = 0;
-                count++;
-            }
+            characterCount[c - 'a']++;
         }
-        i++;
+    }
+
+   //Get the array size
+   for (int i = 0; i < 26; i++)
+    {
+        if (characterCount[i] > 1)
+        {
+            count++;
+            //printf("Character %c appears %d times.\n", 'a' + i, characterCount[i]);
+        }
     }
     printf("%d", count);
     //printf("\a");           //Bell sound
