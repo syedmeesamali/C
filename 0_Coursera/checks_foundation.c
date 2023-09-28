@@ -3,13 +3,28 @@ Foundation checks (First course of 7 part series)
 */
 
 #include <stdio.h>
-int main(void)
-{
-    //Loops in C
-    int i = 0;
-    for (i=0; i<3; i++)
+
+int main(void) {
+
+    int i;
+
+    printf("+");
+    for (i = 0; i < 23; i++)
+        printf("-");
+    printf("+\n");
+
+    for (i = 0; i < 3; i++)
     {
-        printf("C is fun!\n");
+        printf("| o | X | o | X | o | X |");
+        printf("\n");
+        printf("| X | o | X | o | X | o |");
+        printf("\n");
     }
-    return 0;
+
+    printf("+");
+    for (i = 0; i < 23; i++)
+        printf("-");
+    printf("+");
+
+    return(0);
 }
