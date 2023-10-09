@@ -15,22 +15,13 @@ Variable names can use:
 #include <stdio.h>
 int main(void)
 {
-    /*
-    int i;
-    int numberOfHazelnuts = 0;
-    int distanceTraveled = 0;
-    for(i = 0; i < 9 ; i++)
+    int i, tab;
+    printf("Enter number!");
+    scanf("%d", &tab);
+    printf("Hello %d", tab);
+    for (i=0; i<=tab; i++)
     {
-        printf("At %d miles I have %d hazelnuts.\n", distanceTraveled, numberOfHazelnuts);
-        distanceTraveled = distanceTraveled + 1;
-        numberOfHazelnuts = numberOfHazelnuts + 3;
-    }
-    */
-    int i = 0;
-    //Print the table for 8 multiplication
-    for (i = 0; i <= 10; i++)
-    {
-        printf("%dx8 = %d\n", i, i*8);
+        printf("%dx%d\ = %d\n", i, tab, i*tab);
     }
     return 0;
 }
