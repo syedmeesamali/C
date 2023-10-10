@@ -11,15 +11,12 @@ Variable names can use:
     YouCanUseUppercaseLettersBetweenWordsInsteadOfSpaces
 
 */
-
 #include <stdio.h>
 int main(void)
 {
     int i, tab;
-    printf("Enter number!");
     scanf("%d", &tab);
-    printf("Hello %d", tab);
-    for (i=0; i<=tab; i++)
+    for (i=0; i<=10; i++)
     {
         printf("%dx%d\ = %d\n", i, tab, i*tab);
     }
