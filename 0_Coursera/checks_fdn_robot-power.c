@@ -19,7 +19,7 @@ int main(void)
     scanf("%d", &numRobots);
     for (int i=0; i<numRobots; i++)
     {
-        scanf("%d %d %d %d", &engPower, &resistance, &weight, &height);
+        scanf("%d %d %d %d", &height, &weight, &engPower, &resistance);
         sumPower = sumPower + ((engPower + resistance) * (weight - height));
     }
     printf("\n%d", sumPower);
