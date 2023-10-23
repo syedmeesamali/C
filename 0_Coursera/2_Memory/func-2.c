@@ -2,6 +2,7 @@
 - Start of new course # 3 (Modular programming & memory management)
 Functions
 */
+
 #include <stdio.h>
 void printLine(int nCols, char pattern);
 void printTriangle(int nLines, char pattern);
@@ -15,13 +16,16 @@ int main(void)
     printf("How many columns would you like? ");
     scanf("%d", &nCols);
     printLine(nCols, 'X');
-
     printf("How many lines would you like? ");
     scanf("%d", &nLines);
     printTriangle(nLines, '*');
     printf("\n");
     printRectangle(nLines, nCols, '#');
 
+} //End of main function
+
+
+//First function
 void printLine(int nCols, char pattern)
 {
    int i;
@@ -32,6 +36,7 @@ void printLine(int nCols, char pattern)
    printf("\n");
 }
 
+//Second function
 void printTriangle(int nLines, char pattern)
 {
    int line, cols;
@@ -42,11 +47,11 @@ void printTriangle(int nLines, char pattern)
    }
 }
 
+//Third function
 void printRectangle(int nLines, int nCols, char pattern)
 {
    int i;
    for (i = 0; i < nLines; i++){
       printLine(nCols, pattern);
    }
-}
 }
