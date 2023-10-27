@@ -26,23 +26,42 @@ void convertUnit(double x, char y);
 
 int main(void)
 {
-    int values;
-    double unit;
-    char letter = 'a';
+    int values = 0;
     scanf("%d", &values);
+    double unit[values];
+    char letter[values];
+
     for (int i=0; i<values; i++)
     {
-        scanf("%lf %c", &unit, &letter);
-        convertUnit(unit, letter);
-        printf("End of work!");
+        scanf("%lf %c", &unit[i], &letter[i]);
+        //convertUnit(unit, letter);
     }
-
+    for (int j=0; j<values; j++)
+    {
+        convertUnit(unit[j], letter[j]);
+    }
+    return 0;
 } //End of main function
 
 
 //Smart unit converter
 void convertUnit(double x, char y)
 {
-   printf("%lf entered with %c", x, y);
-   printf("\n");
+   double result = 0.0;
+   if (y == 'm')
+   {
+        result = x * 3.2808;
+        printf("%lf ft\n", result);
+   } else if (y == 'g')
+   {
+        result = x * 0.002205;
+        printf("%lf lbs\n", result);
+   } else if (y == 'c')
+   {
+        result = 32 + 1.8 * x;
+        printf("%lf f\n", result);
+   } else
+   {
+       return 0;
+   }
 }
