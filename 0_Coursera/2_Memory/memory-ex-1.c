@@ -17,15 +17,28 @@ int calcSize(char c);
 int main(void)
 {
     int total;
-    int val;
-    char type;
+    int sum = 0;
     scanf("%d", &total);
+    int val[total];
+    char type[total];
     for (int i=0; i<total; i++)
     {
-        scanf("%d %c", &val, &type);
-
+        scanf("%d %c", &val[i], &type[i]);
     }
 
+    //Make sum calculation from saved array
+    for (int j=0; j<total; j++)
+    {
+        if (type[j] == 'c' || type[j] == 'i' || type[j] == 'd')
+        {
+            sum = sum + val[j] * calcSize(type[j]);
+        } else
+        {
+            printf("Invalid tracking code type");
+            return 0;
+        }
+    }
+    printf("%d bytes", sum);
     return 0;
 } //End of main
 
