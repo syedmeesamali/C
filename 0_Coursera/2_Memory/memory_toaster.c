@@ -21,18 +21,35 @@ output: 147 KB and 176 B
 */
 
 #include <stdio.h>
-int findSize(int a);
+int findSize(int a, char c);
 int main(void)
 {
     int val = 0;
-    int sum = 0;
-    scanf("%d", &val);
-    sum = findSize(val);
-    printf("Value now is %d", sum);
+    char type = 'c';
+    int kb = 0;
+    int bytes = 0;
+    scanf("%c %d", &type, &val);
+    kb = (val * findSize(val, type)) / 1000;
+    bytes = (val * findSize(val, type)) % 1000;
+    printf("%d KB %d bytes", kb, bytes);
     return 0;
 } //End of main
 
-int findSize(int a)
+//Function to find the relevant suitable size
+int findSize(int a, char c)
 {
-    return a * 2;
+
+    if (c == 'i')
+    {
+        return 4;
+    } else if (c == 'c')
+    {
+        return 1;
+    } else if (c == 'd')
+    {
+        return 8;
+    } else
+    {
+        return 0;
+    }
 }
