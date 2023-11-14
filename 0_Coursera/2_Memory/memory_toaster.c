@@ -26,30 +26,25 @@ int main(void)
 {
     int val = 0;
     char type = 'c';
-    int kb = 0;
-    int bytes = 0;
+    unsigned int kb = 0;
+    unsigned int bytes = 0;
+    unsigned int sum = 0;
     scanf("%c %d", &type, &val);
-    kb = (val * findSize(val, type)) / 1000;
-    bytes = (val * findSize(val, type)) % 1000;
-    printf("%d KB %d bytes", kb, bytes);
-    return 0;
-} //End of main
-
-//Function to find the relevant suitable size
-int findSize(int a, char c)
-{
-
-    if (c == 'i')
+    if (type == 'i')
     {
-        return 4;
-    } else if (c == 'c')
+        sum = sizeof(int) * val;
+    } else if (type == 'c')
     {
-        return 1;
-    } else if (c == 'd')
+        sum = sizeof(char) * val;
+    } else if (type == 'd')
     {
-        return 8;
+        sum = sizeof(double) * val;
     } else
     {
         return 0;
     }
-}
+    kb = sum / 1000;
+    bytes = sum % 1000;
+    printf("%u KB and %u B", kb, bytes);
+    return 0;
+} //End of main
