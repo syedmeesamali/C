@@ -27,6 +27,8 @@ int main(void)
     int val = 0;
     char type = 'c';
     unsigned int kb = 0;
+    unsigned int mb = 0;
+    unsigned int mb_ref = 0;
     unsigned int bytes = 0;
     unsigned int sum = 0;
     scanf("%c %d", &type, &val);
@@ -43,8 +45,23 @@ int main(void)
     {
         return 0;
     }
-    kb = sum / 1000;
-    bytes = sum % 1000;
-    printf("%u KB and %u B", kb, bytes);
+    if (sum < 1000)
+    {
+        bytes = sum % 1000;
+        printf("%u B", bytes);
+    } else if (sum < 1000000)
+    {
+        kb = sum / 1000;
+        bytes = sum % 1000;
+        printf("%u KB and %u B", kb, bytes);
+    } else
+    {
+        mb = sum / 1000000;
+        mb_ref = sum % 1000000;
+        kb = mb_ref / 1000;
+        bytes = mb_ref % 1000;
+        printf("%u MB and %u KB and %u B", mb, kb, bytes);
+    }
+
     return 0;
 } //End of main
