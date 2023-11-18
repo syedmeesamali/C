@@ -8,12 +8,14 @@ int main(void)
 {
     int val = 0;
     char type;
-    unsigned int kb = 0;
-    unsigned int mb = 0;
+    int kb = 0;
+    int mb = 0;
+    int sum = 0;
     scanf("%c %d", &type, &val);
-    if (type == 'd')
-    {
-        printf("\n%u Bytes", sizeof(double) * val);
-    }
+    sum = sizeof(double) * val;
+    mb = sum / 1000000;
+    kb = (sum - mb * 1000000) / 1000;
+    printf("\nBytes are %d", sum);
+    printf("\n%d MB %d KB", mb, kb);
     return 0;
 } //End of main
