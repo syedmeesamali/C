@@ -11,12 +11,12 @@ int main(void)
 
     //Lets capture the values from array pointer
     int *ptr1, *ptr2;
-    ptr1 = array + 2;
-    ptr2 = &ptr1[5];
+    ptr1 = array + 2;       //3rd element (as 1st will be ptr1 = array
+    ptr2 = &ptr1[5];        //starting at 3rd take 5 more to right so 8th element
 
     //* ptr = 2;      //Now first element will be replaced
-    printf("Value of *(ptr1+1) is %d", *(ptr1 + 1));
-    printf("Value of *(ptr2-3) is %d", *(ptr2 - 3));
+    printf("Value of *(ptr1+1) is %d\n", *(ptr1 + 1));
+    printf("Value of *(ptr2-3) is %d\n", *(ptr2 - 5));
     return 0;
 }
 
