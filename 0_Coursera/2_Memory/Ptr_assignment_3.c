@@ -19,24 +19,16 @@ void reverseArray(int * ptr);
 int main(void)
 {
 	int array[] = {4, 6, 12, -5, -7, 3};
+	printf("\nNew Array: %d, %d, %d, %d, %d, %d", array[0], array[1], array[2], array[3], array[4], array[5]);
 	reverseArray(array);
-	printf("New Array: %d, %d, %d, %d, %d, %d", array[0], array[1], array[2], array[3], array[4], array[5]);
+	printf("\nNew Array: %d, %d, %d, %d, %d, %d", array[0], array[1], array[2], array[3], array[4], array[5]);
+	printf("\n Last value: %d", array[6-1]);
 	return 0;
 }
 
 //Main array reverse function
 void reverseArray(int * ptr)
 {
-    int swap = *(ptr + 5);
-    *(ptr + 0) = swap;
-    swap = *(ptr + 4);
-    *(ptr + 1) = swap;
-    swap = *(ptr + 3);
-    *(ptr + 2) = swap;
-    swap = *(ptr + 2);
-    *(ptr + 3) = swap;
-    swap = *(ptr + 1);
-    *(ptr + 4) = swap;
-    swap = *(ptr + 0);
-    *(ptr + 5) = swap;
+    int swap = * (ptr + 5);
+    * (ptr + 0) = swap;
 }
