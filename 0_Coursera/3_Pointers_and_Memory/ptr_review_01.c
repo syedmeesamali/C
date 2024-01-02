@@ -15,7 +15,6 @@ Output: 6 5 4 3 2 1
 
 #include <stdio.h>
 void reverseArray(int *);
-
 int main(void)
 {
 	int array[] = {4, 6, 12, -5, -7, 3};
