@@ -1,9 +1,7 @@
 /* C Programming - POINTERS and MEMORY Management Course 4
-
+Seeing how variables are stored in memory and how to access them.
 */
-
 #include <stdio.h>
-int doubleArray(int[]);
 int main(void)
 {
 	int array[] = {4, 6, 12};
