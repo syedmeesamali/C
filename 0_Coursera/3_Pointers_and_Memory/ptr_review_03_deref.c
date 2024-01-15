@@ -15,10 +15,21 @@ int main(void)
     printf("%d variable stored at address at %p \n", *jAddr, jAddr);
 
     myFunction(iAddr, jAddr);
+    doubleThem(iAddr, jAddr);
 	return 0;
 }
 
 void myFunction(int *iptr, int *aptr)
 {
-    printf("Function received address: %p, %p - Values %d and %d", iptr, aptr, *iptr, *aptr);
+    printf("Function received address: %p, %p - Values %d and %d\n", iptr, aptr, *iptr, *aptr);
 }
+
+void doubleThem(int *iptr, int *aptr)
+{
+    int *bptr = iptr;
+    int *cptr = aptr;
+    *bptr = *bptr * 2;
+    *cptr = *cptr * 2;
+    printf("Values after DOUBLE function = %d and %d", *iptr, *aptr);
+}
+
