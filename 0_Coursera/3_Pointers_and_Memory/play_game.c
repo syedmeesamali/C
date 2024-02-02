@@ -30,5 +30,9 @@ void behind(int *ptr, int x)
             max = *(ptr + i);
         }
     }
-    printf("End from array and max is %d!\n", max);
+    for (int i=0; i<x; i++)
+    {
+        *(ptr+i) = max - (*(ptr+i));
+    }
+    //printf("End from array and max is %d!\n", max);
 }
