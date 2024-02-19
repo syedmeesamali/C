@@ -10,7 +10,13 @@ int main()
     printf("You entered: ");
     for (int j=0; j<3; j++)
     {
-        printf("%s", words[j]);
+        printf("%s ", words[j]);
+    }
+    
+    printf("\nFirst letters!\n");
+    for (int i=0; i<3; i++)
+    {
+        printf("First letter of %s is %c\n", words[i], words[i][0]);
     }
     return 0;
 }
