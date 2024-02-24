@@ -1,15 +1,16 @@
-# C
+# C Programming - Embedded & Security
 
-## C Programming - For Embedded Works
+### 0. Coursera
 
-1. Linked List (As per course to student)
+  - C programming course from Coursera Pro. C programming language foundations -> Modular programming and memory management -> Pointers and memory management
 
-2. Pointers and Structs
+### 2. Linked List in C
 
-3. eDX course
+### 3. Pointers and Structs
 
-4. Mechatronics
+### 4. eDX course
 
-5. Win32 API Examples
-
-6. Miscellaneous programs
+### 5. Mechatronics
+  - Arduino programming and related examples
+    
+### 6. Win32 API Examples
