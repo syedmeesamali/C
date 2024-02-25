@@ -3,6 +3,7 @@
 ### 0. Coursera
 
   - C programming course from Coursera Pro. C programming language foundations -> Modular programming and memory management -> Pointers and memory management
+  - Ocassionally some assembly work also from low level programming book
 
 ### 2. Linked List in C
 
