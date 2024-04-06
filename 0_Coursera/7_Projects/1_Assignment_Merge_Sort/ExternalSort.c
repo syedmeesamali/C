@@ -9,7 +9,6 @@ writing the sorted ints into the output file. externalSort() function should dis
 found in the input file as well as the number of temporary files that were used during the sorting process.
 These temporary files should be deleted by program when it terminates. externalSort() function must time its
 activity reporting how much time it took to create the random number output file.
-
 So, you should use the random number generator provided in Random.c (attached) rather than the built-in rand() function.
 */
 #include <stdio.h>
@@ -19,8 +18,7 @@ So, you should use the random number generator provided in Random.c (attached) r
 #include <time.h>
 
 #define MAX_FILENAME_LENGTH 256
-#define MAX_LINE_LENGTH 100
-
+#define MAX_LINE_LENGTH 15
 //Generate the random input file name
 void generateRandomInputFile(char* filename, int numInts)
 {
@@ -35,7 +33,63 @@ void generateRandomInputFile(char* filename, int numInts)
     {
         fprintf(file, "%d\n", rand());
     }
+    printf("\nFile created successfully!\n");
     fclose(file);
+}
+
+// Merge function for merging two sorted arrays
+void merge(int arr[], int l, int m, int r)
+{
+    int i, j, k;
+    int n1 = m - l + 1;
+    int n2 = r - m;
+    int L[n1], R[n2];
+    for (i = 0; i < n1; i++)
+        L[i] = arr[l + i];
+    for (j = 0; j < n2; j++)
+        R[j] = arr[m + 1 + j];
+    i = 0;
+    j = 0;
+    k = l;
+    while (i < n1 && j < n2)
+    {
+        if (L[i] <= R[j])
+        {
+            arr[k] = L[i];
+            i++;
+        } else
+        {
+            arr[k] = R[j];
+            j++;
+        }
+        k++;
+    }
+    // Copy the remaining elements of L[], if any
+    while (i < n1)
+    {
+        arr[k] = L[i];
+        i++;
+        k++;
+    }
+    // Copy the remaining elements of R[], if any
+    while (j < n2)
+    {
+        arr[k] = R[j];
+        j++;
+        k++;
+    }
+} //End of merge
+
+//Merge Sort function declaration
+void mergeSort(int arr[], int l, int r)
+{
+    if (l < r)
+    {
+        int m = l + (r - l) / 2;
+        mergeSort(arr, l, m);
+        mergeSort(arr, m + 1, r);
+        merge(arr, l, m, r);
+    }
 }
 
 //Main merge sort files algorithm goes here
@@ -59,7 +113,8 @@ void mergeSortFiles(char* outputFile, char** tempFiles, int numFiles)
     for (int i = 0; i < numFiles; i++)
     {
         filePointers[i] = fopen(tempFiles[i], "r");
-        if (filePointers[i] == NULL) {
+        if (filePointers[i] == NULL)
+        {
             perror("Error opening temporary file");
             exit(EXIT_FAILURE);
         }
@@ -128,28 +183,51 @@ void mergeSortFiles(char* outputFile, char** tempFiles, int numFiles)
 }
 
 //Main external sort algorithm
-void externalSort(char* inputFileName, char* outputFileName, int bufferSize)
+void externalSort(char* inputFileName, char* outputFileName, int bufferSize, int numInts)
 {
     clock_t start = clock();
-    // Count the number of integers in the input file
     FILE* inputFile = fopen(inputFileName, "r");
     if (inputFile == NULL)
     {
         perror("Error opening input file");
         exit(EXIT_FAILURE);
     }
-    int numInts = 0;
     int numTempFiles = 5;       //5 temporary files
+    printf("\nInput file reading done...\n");
     fclose(inputFile);
-    char** tempFiles = NULL; // Array to store names of temporary files
-    mergeSortFiles(outputFileName, tempFiles, numTempFiles);
 
-    // Delete temporary files
-    for (int i = 0; i < numTempFiles; i++)
+    // Create and sort chunks of data into temporary files
+    char tempFileName[MAX_FILENAME_LENGTH];
+    while (!feof(inputFile))
     {
-        remove(tempFiles[i]);
+        int* buffer = malloc(bufferSize * sizeof(int));
+        if (buffer == NULL)
+        {
+            perror("Memory allocation failed");
+            exit(EXIT_FAILURE);
+        }
+        int numRead = fread(buffer, sizeof(int), bufferSize, inputFile);
+
+        mergeSort(buffer, 0, numRead - 1);
+        sprintf(tempFileName, "temp%d.txt", numTempFiles);
+
+
+        FILE* tempFile = fopen(tempFileName, "w");
+        if (tempFile == NULL)
+        {
+            perror("Error creating temporary file");
+            exit(EXIT_FAILURE);
+        }
+        for (int i = 0; i < numRead; i++)
+        {
+            fprintf(tempFile, "%d\n", buffer[i]);
+        }
+        fclose(tempFile);
+        free(buffer);
+        numInts += numRead;
+        numTempFiles++;
     }
-    free(tempFiles);
+
     clock_t end = clock();
     double timeTaken = ((double) (end - start)) / CLOCKS_PER_SEC;
     printf("Number of integers in input file: %d\n", numInts);
@@ -157,15 +235,15 @@ void externalSort(char* inputFileName, char* outputFileName, int bufferSize)
     printf("Time taken to sort: %.4f seconds\n", timeTaken);
 }
 
-
 //Main function
 int main()
 {
     char inputFileName[MAX_FILENAME_LENGTH] = "input.txt";
     char outputFileName[MAX_FILENAME_LENGTH] = "output.txt";
     int bufferSize = 10; // Adjust buffer size as needed
-    generateRandomInputFile(inputFileName, 50);
-    externalSort(inputFileName, outputFileName, bufferSize);
+    int numInts = 50;
+    generateRandomInputFile(inputFileName, numInts);
+    externalSort(inputFileName, outputFileName, bufferSize, numInts);
     printf("\nDone\n");
     return 0;
 } // end main()
