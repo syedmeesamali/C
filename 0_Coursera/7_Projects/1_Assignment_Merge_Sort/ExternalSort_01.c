@@ -15,8 +15,11 @@ So, you should use the random number generator provided in Random.c (attached) r
 #include <stdlib.h>
 #include <limits.h>
 #include <time.h>
+
 #define MAX_FILENAME_LENGTH 255
-//Generate the random input file name
+#define MAX_TEMP_FILES 10
+
+//Generate the random numbers input file (to be later sorted)
 void generateRandomInputFile(char* filename, int numInts)
 {
     FILE* file = fopen(filename, "w");
@@ -31,6 +34,7 @@ void generateRandomInputFile(char* filename, int numInts)
     printf("\nFile created successfully!\n");
     fclose(file);
 }
+
 // Simple Merge Sort implementation for sorting each chunk
 void merge(int arr[], int l, int m, int r) {
     int i, j, k;
@@ -41,9 +45,7 @@ void merge(int arr[], int l, int m, int r) {
 
     for (i = 0; i < n1; i++) { L[i] = arr[l + i]; }
     for (j = 0; j < n2; j++) { R[j] = arr[m + 1 + j]; }
-    i = 0;
-    j = 0;
-    k = l;
+    i = 0;    j = 0;    k = l;
     while (i < n1 && j < n2)
     {
         if (L[i] <= R[j]) {
@@ -66,6 +68,7 @@ void merge(int arr[], int l, int m, int r) {
         k++;
     }
 }
+
 //Main merge sort using the above MERGE
 void mergeSort(int arr[], int l, int r) {
     if (l < r) {
