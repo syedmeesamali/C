@@ -1,8 +1,8 @@
 /*The main program in ExternalSort.c program should call a function:
 void externalSort(char* inputFileName, char* outputFileName, int bufferSize),
-where "inputFileName" – the name of the input file containing the random ints.
-"outputFileName" – the name of the output file containing the sorted ints.
-"bufferSize" –the size of the internal buffer used by the internal sort function.
+where "inputFileName" ï¿½ the name of the input file containing the random ints.
+"outputFileName" ï¿½ the name of the output file containing the sorted ints.
+"bufferSize" ï¿½the size of the internal buffer used by the internal sort function.
 externalSort() function must use an external merge sort algorithm to sort the data in the input file
 into numeric ascending order using a collection of temporary files to hold the intermediate results,
 writing the sorted ints into the output file. externalSort() function should display the number of ints
@@ -36,13 +36,12 @@ void generateRandomInputFile(char* filename, int numInts)
 }
 
 // Simple Merge Sort implementation for sorting each chunk
-void merge(int arr[], int l, int m, int r) {
+void merge(int arr[], int l, int m, int r)
+{
     int i, j, k;
     int n1 = m - l + 1;
     int n2 = r - m;
-
     int L[n1], R[n2];
-
     for (i = 0; i < n1; i++) { L[i] = arr[l + i]; }
     for (j = 0; j < n2; j++) { R[j] = arr[m + 1 + j]; }
     i = 0;    j = 0;    k = l;
@@ -67,7 +66,7 @@ void merge(int arr[], int l, int m, int r) {
         j++;
         k++;
     }
-}
+} //End of merge
 
 //Main merge sort using the above MERGE
 void mergeSort(int arr[], int l, int r) {
@@ -140,7 +139,8 @@ void externalSort(char* inputFileName, char* outputFileName, int bufferSize) {
     char** tempFiles = malloc(0); // Dynamically grow this array as needed
     char tempFileName[MAX_FILENAME_LENGTH];
     int bufferIndex = 0;
-    while (fscanf(inputFile, "%d", &buffer[bufferIndex]) != EOF) {
+    while (fscanf(inputFile, "%d", &buffer[bufferIndex]) != EOF)
+    {
         bufferIndex++;
         if (bufferIndex == bufferSize) {
             mergeSort(buffer, 0, bufferSize - 1);
@@ -187,7 +187,7 @@ void externalSort(char* inputFileName, char* outputFileName, int bufferSize) {
     printf("%.4f milli-seconds\n", timeTaken * 100);
 }
 //MAIN function
-int main(int argc, char* argv[]) {
+int main() {
     printf("External sort\n");
     char inputFileName[MAX_FILENAME_LENGTH] = "data5k.txt";
     char outputFileName[MAX_FILENAME_LENGTH] = "sorted5k.txt";
