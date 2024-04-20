@@ -10,7 +10,6 @@ struct date
 void printDate(struct date);
 void readDate(struct date *);
 struct date advanceDay(struct date);
-
 int main(void) {
 	struct date today, tomorrow;
 	readDate(&today);
@@ -25,7 +24,6 @@ void readDate(struct date *now)
 {
     scanf("%d %d %d", &now -> year, &now -> month, &now -> day);
 }
-
 
 //Print date function
 void printDate(struct date dat)
@@ -51,11 +49,12 @@ struct date advanceDay(struct date today)
     today.day += 1;
     if (today.month == 1 || today.month == 3 || today.month == 5 || today.month == 7 || today.month == 8 || today.month == 10 || today.month == 12)
     {
-        if (today.day > 31)
+        if (today.day > 30)
         {
+            today.day = 1;
             if (today.month != 12)
             {
-                today.month += 1;
+                today.month = 1;
             } else
             {
                 today.year += 1;
@@ -63,15 +62,18 @@ struct date advanceDay(struct date today)
         }
     } else if (today.month == 4 || today.month == 6 || today.month == 9 || today.month == 11)
     {
-        if (today.day > 30)
+        if (today.day > 29)
         {
+            today.day = 1;
             today.month += 1;
         }
     }  else
     {
-        if (today.day > 28)
+        if (today.day > 27)
         {
+            today.day = 1;
             today.month += 1;
         }
     }
+    return today;
 } //End of struct function
