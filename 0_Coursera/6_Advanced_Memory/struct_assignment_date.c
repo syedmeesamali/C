@@ -52,11 +52,12 @@ struct date advanceDay(struct date today)
         if (today.day > 30)
         {
             today.day = 1;
-            if (today.month != 12)
+            if (today.month < 12)
             {
-                today.month = 1;
+                today.month += 1;
             } else
             {
+                today.month = 1;
                 today.year += 1;
             }
         }
