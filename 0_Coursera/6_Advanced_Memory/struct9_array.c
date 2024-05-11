@@ -12,21 +12,17 @@ struct point
 //Function prototypes
 void printPoint(struct point pt);
 void readPoint(struct point *pt);
-
-//Triangle struct
-struct Triangle
-{
-
-};
+void printTriangle(struct point *pt);
 
 
 //Main function
 int main(void)
 {
-	struct point triangle[3]
+	struct point triangle[3];
 	readPoint(&triangle[0]);
 	readPoint(&triangle[1]);
 	readPoint(&triangle[2]);
+	printTriangle(triangle);
 	return 0;
 }
 
@@ -46,13 +42,13 @@ void printTriangle(struct point *ptr)
     int i=0;
     for (i=0; i<3; i++)
     {
-
+        printPoint(ptr[i]);
     }
 }
 
 //Print the triangle
 void printPoint(struct point pt)
 {
-    printf("%d %d", pt.x, pt.y);
+    printf("[%d %d]; ", pt.x, pt.y);
 }
 
