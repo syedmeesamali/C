@@ -29,14 +29,22 @@ int main(void)
 {
 
     // Fill in your main function here
-
+    struct point *polygon;
+    int sides;
+    scanf("%d", &sides);
+    polygon = (struct point *)malloc(sides * sizeof(struct point));
+    initializePoly(polygon, sides);
+    printPoly(polygon, sides);
+    return 0;
 }
 
+//Print the poly vertices single point
 void printPoint(struct point pt)
 {
     printf("(%d, %d)\n", pt.x, pt.y);
 }
 
+//Print the whole polygon
 void printPoly(struct point *ptr, int N)
 {
     int i;
@@ -49,5 +57,10 @@ void printPoly(struct point *ptr, int N)
 // Write your initializePoly() function here
 void initializePoly(struct point *ptr, int a)
 {
-
+    struct point * polygon;
+    for (int i=0; i<a; i++)
+    {
+        polygon -> x = i;
+        polygon -> y = i*i;
+    }
 }
