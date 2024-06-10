@@ -15,8 +15,7 @@ print the vertices of the polygon using the function printPoly().
 #include <stdio.h>
 #include <stdlib.h>
 
-struct point
-{
+struct point{
 	int x;
 	int y;
 };
@@ -25,8 +24,7 @@ void printPoint(struct point);
 void printPoly(struct point *, int);
 void initializePoly(struct point *, int);
 
-int main(void)
-{
+int main(void) {
 
     // Fill in your main function here
     struct point *polygon;
@@ -35,21 +33,17 @@ int main(void)
     polygon = (struct point *)malloc(sides * sizeof(struct point));
     initializePoly(polygon, sides);
     printPoly(polygon, sides);
+    free(polygon);
     return 0;
 }
 
-//Print the poly vertices single point
-void printPoint(struct point pt)
-{
+void printPoint(struct point pt) {
     printf("(%d, %d)\n", pt.x, pt.y);
 }
 
-//Print the whole polygon
-void printPoly(struct point *ptr, int N)
-{
+void printPoly(struct point *ptr, int N) {
     int i;
-    for (i=0; i<N; i++)
-    {
+    for (i=0; i<N; i++) {
         printPoint(ptr[i]);
     }
 }
@@ -57,10 +51,11 @@ void printPoly(struct point *ptr, int N)
 // Write your initializePoly() function here
 void initializePoly(struct point *ptr, int a)
 {
-    struct point * polygon;
     for (int i=0; i<a; i++)
     {
-        polygon -> x = i;
-        polygon -> y = i*i;
+        ptr -> x = -i;
+        printf("%d (i)  (poly.x) \n", i);
+        ptr -> y = i*i;
+        printf("%d (i) (poly.y) \n", i);
     }
 }
