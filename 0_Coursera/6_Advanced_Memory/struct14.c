@@ -1,5 +1,4 @@
 #include<stdio.h>
-
 //Simple point struct
 struct point
 {
@@ -17,6 +16,14 @@ int main()
     start = &p1;
     p1.next = &p2;
     p2.next = &p3;
+    //printf("\n %p - %p - %p \n", &p1.x, &p1.y, &p1.next);
+    // printf("\n %lu - %lu - %lu \n", sizeof(p2.x), sizeof(p2.y), sizeof(p2.next));
     ptr = start;
+
+    while (ptr != NULL)
+    {
+        printf("[%d %d] \n", ptr -> x, ptr -> y);
+        ptr = ptr -> next; 
+    }
     return 0;
 }
