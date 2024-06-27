@@ -13,13 +13,7 @@ struct node *appendData(struct node *end, struct node *newpt);
 //Main here
 int main()
 {
-    struct node *head = NULL;
     struct node *start, *end, *newpt;       //Separate pointers for start and end
-    start = end;
-    head = (struct node *)malloc(sizeof(struct node));      //Allocate memory for head
-    head -> data = 45;
-    head -> link = NULL;
-    printData(head);
     int nums, i, dat;
     printf("How many points?");
     scanf("%d", &nums);
@@ -28,8 +22,13 @@ int main()
         printf("\nData = ");
         scanf("%d", &dat);
         newpt = createNode(dat);
-    } 
-    end = appendData(end, newpt);
+        if (i == 0) {
+            start = end = newpt;
+        } else {
+            end = appendData(end, newpt);
+        } //End of if
+    }
+    printData(start);
     return 0;
 }
 
@@ -40,7 +39,7 @@ void printData(struct node *start)
     ptr = start;
     while (ptr != NULL)
     {
-        printf("\n %d \n", ptr -> data);
+        printf("%d \n", ptr -> data);
         ptr = ptr -> link;
     }
 }
@@ -54,7 +53,8 @@ struct node *createNode(int x)
 }
 
 //Append node
-struct node *appendData(struct node *start, struct node *end)
+struct node *appendData(struct node *end, struct node *newptr)
 {
-    //Implement append here
+    end -> link = newptr;           //Link is part of the struct node itself
+    return (end -> link);
 }
