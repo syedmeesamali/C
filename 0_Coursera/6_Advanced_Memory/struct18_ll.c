@@ -7,19 +7,22 @@ struct node {
     struct node *link;
 };
 
+//All function prototypes go here
 void printData(struct node *ref);
 struct node *createNode(int x); 
 struct node *appendData(struct node *end, struct node *newpt);
+void freeData(struct node *start);
+
 //Main here
 int main()
 {
-    struct node *start, *end, *newpt;       //Separate pointers for start and end
+    struct node *start, *end, *newpt;       //Separate pointers for start, end and new
     int nums, i, dat;
     printf("How many points?");
     scanf("%d", &nums);
     for (i=0; i<nums; i++)
     {
-        printf("\nData = ");
+        printf("Data = ");
         scanf("%d", &dat);
         newpt = createNode(dat);
         if (i == 0) {
@@ -29,6 +32,7 @@ int main()
         } //End of if
     }
     printData(start);
+    freeData(start);
     return 0;
 }
 
@@ -57,4 +61,16 @@ struct node *appendData(struct node *end, struct node *newptr)
 {
     end -> link = newptr;           //Link is part of the struct node itself
     return (end -> link);
+}
+
+//Free or delete the list
+void freeData(struct node *start)
+{
+    struct node *ptr = start;
+    while (ptr != NULL)
+    {
+        start = ptr;
+        ptr = ptr -> link;
+        free(start);
+    }
 }
