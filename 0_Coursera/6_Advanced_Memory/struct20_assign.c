@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<string.h>
 
 //Define structs here first
 struct student {
@@ -28,15 +29,7 @@ struct student *createStudent(char studentName[], int studentAge)
 {
     struct student *ptr;
     ptr = (struct student *)malloc(sizeof(struct student));     //Allocate memory
-    char refName[50];
-    int i = 0;
-    while (studentName[i] != '\0')
-    {
-        refName[i] = studentName[i];
-        printf("%c \n", refName[i]);
-        i++;
-    }
-    ptr -> name = refName[50];
+    strcpy(ptr -> name, studentName);
     ptr -> age = studentAge;
     ptr -> next = NULL;
     return ptr;
