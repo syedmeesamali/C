@@ -13,7 +13,7 @@ struct digit *append(struct digit *end, struct digit *newPos);
 int main()
 {
     int a = 5; int b = 7; int c = 12;
-    struct digit *start, *digitPtr, *end;       //Three structs to define the start, middle and end of a linkedlist
+    struct digit *start, *digitPtr, *end, *tmp;       //Three structs to define the start, middle and end of a linkedlist
     start = createDigit(a);
     end = start;
     digitPtr = createDigit(b);
@@ -22,7 +22,10 @@ int main()
     digitPtr = createDigit(c);
     end = append(end, digitPtr);
     printf("Digit created is %d saved at memory address: %p\n", start -> num, start -> next);
-    //Free memory 
+    //Free memory - not simple task as need to be clear about locations to free one by one
+    tmp = start -> next;
+    free(start); //We haven't lost NEXT as its already saved in tmp
+    free(tmp);
     return 0;
 }
 
