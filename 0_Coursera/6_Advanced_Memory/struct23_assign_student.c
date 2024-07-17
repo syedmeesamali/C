@@ -28,7 +28,7 @@ int main(void) {
     newStudptr = createStudent("Mike", ageM);
     end = append(end, newStudptr);
 
-    //printStudents(start);
+    printStudents(start);
     tmp = start->next;
 
     free(start);
@@ -56,4 +56,21 @@ struct student *createStudent(char studentName[50], int studentAge)
 };
 
 //struct student * append(struct student * end, struct student * newStudptr);
+struct student * append(struct student * end, struct student * newStudptr)
+{
+    struct student *studPtr;
+    studPtr = (struct student *)malloc(sizeof(struct student));
+    end -> next = newStudptr;
+    end = newStudptr;
+    return end;
+};
+
 //void printStudents(struct student *start);
+void printStudents(struct student *start)
+{
+    while (start != NULL)
+    {
+        printf("Student %s has age of %d. \n", start -> name, start -> age);
+        start = start -> next;
+    }
+}
