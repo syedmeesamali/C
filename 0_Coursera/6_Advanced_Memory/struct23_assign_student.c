@@ -70,7 +70,7 @@ void printStudents(struct student *start)
 {
     while (start != NULL)
     {
-        printf("Student %s has age of %d. \n", start -> name, start -> age);
+        printf("%s is %d years old. \n", start -> name, start -> age);
         start = start -> next;
     }
 }
