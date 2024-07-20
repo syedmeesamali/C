@@ -12,6 +12,9 @@ struct digit
 struct digit *createDigit(int val);
 struct digit *append(struct digit *end, struct digit *newPos);
 void printDigit(struct digit *ref);
+void freeList(struct digit *start);
+
+//Main is below
 int main()
 {
     int a = 5; int b = 7; int c = 12; int d = 15;
@@ -26,10 +29,7 @@ int main()
     digitPtr = createDigit(d);
     end = append(end, digitPtr);        //Now a list is of FOUR (04) digits instead of original 3
     printDigit(start);                  //Printing using a print function now
-
-    tmp = start -> next;
-    free(start); //We haven't lost NEXT as its already saved in tmp
-    free(tmp);
+    freeList(start);
     return 0;
 }
 
@@ -59,5 +59,18 @@ void printDigit(struct digit *ref)
     {
         printf("%d is stored with next memory at %p\n", ref -> num, ref -> next);
         ref = ref -> next;
+    }
+}
+
+//Free the variables from list
+void freeList(struct digit *start)
+{
+    struct digit *ptr = start;
+    struct digit *temp;
+    while (ptr != NULL)
+    {
+        temp = ptr -> next;             //save the next here
+        free(ptr);                      //free the pointer
+        ptr = temp;                     //get back the previous saved next from temp
     }
 }
