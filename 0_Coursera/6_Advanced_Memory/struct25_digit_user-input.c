@@ -66,6 +66,7 @@ struct digit *readNumber(struct digit *ptr)
         }
         scanf("%c", &c);
     }
+    return start;
 };
 
 //Simple printDigit function
