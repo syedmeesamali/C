@@ -15,7 +15,8 @@ struct digit
 //Function prototypes
 struct digit *readNumber(void);
 struct digit *createDigit(int val);
-struct digit *divisibleByThree(struct digit *start);
+struct digit *append(struct digit *end, struct digit *newPos);
+bool divisibleByThree(struct digit *start);
 void printNumber(struct digit *ref);
 void freeNumber(struct digit *start);
 
@@ -69,6 +70,14 @@ struct digit *readNumber(void)
     return start;
 };
 
+//Append digit function
+struct digit *append(struct digit *end, struct digit *newPos)
+{
+    end -> next = newPos;
+    end = newPos;
+    return end;
+}
+
 //Check if divisible by three or not
 bool divisibleByThree(struct digit *start)
 {
@@ -84,9 +93,10 @@ void printNumber(struct digit *ref)
 {
     while (ref != NULL)
     {
-        printf("%d is stored with next memory at %p\n", ref -> num, ref -> next);
+        printf("%d", ref -> num);
         ref = ref -> next;
     }
+    printf("\n");
 }
 
 //Free the variables from list
