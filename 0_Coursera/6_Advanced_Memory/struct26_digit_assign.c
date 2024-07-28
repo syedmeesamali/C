@@ -1,16 +1,14 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+struct digit {
+    int num;
+    struct digit *next;
+};
 
 #define false 0
 #define true 1
 typedef int bool;
-
-//Structs here
-struct digit
-{
-    int num;
-    struct digit *next;
-};
 
 //Function prototypes
 struct digit *readNumber(void);
@@ -21,12 +19,12 @@ void printNumber(struct digit *ref);
 void freeNumber(struct digit *start);
 
 //Main is below
-int main()
-{
+int main(void) {
     struct digit *start;
     start = readNumber();
     printf("The number ");
     printNumber(start);
+    printf("Start value is still %d \n", start -> num);
     if (divisibleByThree(start))
         printf("is divisible by 3.\n");
     else
@@ -35,79 +33,75 @@ int main()
     return 0;
 }
 
-//Create digit function
-struct digit *createDigit(int val)
-{
+struct digit *createDigit(int dig) {
     struct digit *ptr;
-    ptr = (struct digit *)malloc(sizeof(struct digit));
-    ptr -> num = val;
-    ptr -> next = NULL;
+    ptr = (struct digit *) malloc(sizeof(struct digit));
+    ptr->num = dig;
+    ptr->next = NULL;
     return ptr;
 }
 
-//Read the number from the user
-struct digit *readNumber(void)
-{
+struct digit * append(struct digit * end, struct digit * newDigptr) {
+    end->next = newDigptr;
+    return(end->next);
+}
+
+void printNumber(struct digit *start) {
+    struct digit * ptr = start;
+    while (ptr!=NULL) {
+        printf("%d", ptr->num);
+        ptr = ptr->next;
+    }
+    printf("\n");
+}
+
+void freeNumber(struct digit *start) {
+    struct digit * ptr = start;
+    struct digit * tmp;
+    while (ptr!=NULL) {
+        tmp = ptr->next;
+        free(ptr);
+        ptr = tmp;
+    }
+}
+
+struct digit *readNumber(void) {
     char c;
     int d;
-    struct digit *start, *end, *nextPtr;
+    struct digit *start, *end, *newptr;
     start = NULL;
-    scanf("%c", &c);        //Read characters from user as they enter
-    while (c != '\n')       //While enter is not pressed
+    scanf("%c", &c);
+    while (c != '\n')
     {
-        d = c - 48;         //Chars to Digits
-        nextPtr = createDigit(d);
-        if (start == NULL)
-        {
-            start = nextPtr;
+        d = c-48;
+        newptr = createDigit(d);
+        if (start == NULL) {
+            start = newptr;
             end = start;
-        } else
-        {
-            end = append(end, nextPtr);
+        } else {
+            end = append(end, newptr);
         }
         scanf("%c", &c);
     }
-    return start;
-};
-
-//Append digit function
-struct digit *append(struct digit *end, struct digit *newPos)
-{
-    end -> next = newPos;
-    end = newPos;
-    return end;
+    return(start);
 }
 
 //Check if divisible by three or not
 bool divisibleByThree(struct digit *start)
 {
-    int a = start -> num;
+    int a = 0;
+    while (start != NULL)
+    {
+
+    }
+    a = start -> num;
     if (a % 3 == 0)
-        return 1;
-    else
-        return 0;
+    {
+        printf("a val was %d \n");
+        return true;
+    } else
+    {
+        printf("a val was %d - else part \n");
+        return false;
+    }
 };
-
-//Simple printDigit function
-void printNumber(struct digit *ref)
-{
-    while (ref != NULL)
-    {
-        printf("%d", ref -> num);
-        ref = ref -> next;
-    }
-    printf("\n");
-}
-
-//Free the variables from list
-void freeNumber(struct digit *start)
-{
-    struct digit *ptr = start;
-    struct digit *temp;
-    while (ptr != NULL)
-    {
-        temp = ptr -> next;             //save the next here
-        free(ptr);                      //free the pointer
-        ptr = temp;                     //get back the previous saved next from temp
-    }
-}
