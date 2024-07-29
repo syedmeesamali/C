@@ -6,19 +6,14 @@ struct digit {
     struct digit *next;
 };
 
-#define false 0
-#define true 1
-typedef int bool;
-
-//Function prototypes
+// Write your prototypes here
 struct digit *readNumber(void);
 struct digit *createDigit(int val);
 struct digit *append(struct digit *end, struct digit *newPos);
-bool divisibleByThree(struct digit *start);
+int divisibleByThree(struct digit *start);
 void printNumber(struct digit *ref);
 void freeNumber(struct digit *start);
 
-//Main is below
 int main(void) {
     struct digit *start;
     start = readNumber();
@@ -57,8 +52,7 @@ void printNumber(struct digit *start) {
 void freeNumber(struct digit *start) {
     struct digit * ptr = start;
     struct digit * tmp;
-    while (ptr!=NULL)
-    {
+    while (ptr!=NULL) {
         tmp = ptr->next;
         free(ptr);
         ptr = tmp;
@@ -71,8 +65,7 @@ struct digit *readNumber(void) {
     struct digit *start, *end, *newptr;
     start = NULL;
     scanf("%c", &c);
-    while (c != '\n')
-    {
+    while (c != '\n') {
         d = c-48;
         newptr = createDigit(d);
         if (start == NULL) {
@@ -86,8 +79,8 @@ struct digit *readNumber(void) {
     return(start);
 }
 
-//Check if divisible by three or not
-bool divisibleByThree(struct digit *start)
+// Write your divisibleByThree() function here
+int divisibleByThree(struct digit *start)
 {
     int a = 0;
     int sum = 0;
@@ -99,9 +92,9 @@ bool divisibleByThree(struct digit *start)
     }
     if (sum % 3 == 0)
     {
-        return true;
+        return 1;
     } else
     {
-        return false;
+        return 0;
     }
 };
