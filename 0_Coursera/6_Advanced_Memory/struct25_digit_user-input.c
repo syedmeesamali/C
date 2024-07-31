@@ -12,16 +12,26 @@ struct digit
 struct digit *readNumber(struct digit *ptr);
 struct digit *createDigit(int val);
 struct digit *append(struct digit *end, struct digit *newPos);
+struct digit *searchNumber(struct digit *start, int number);
 void printNumber(struct digit *ref);
 void freeNumber(struct digit *start);
 
 //Main is below
 int main()
 {
-    struct digit *start;                                //Three structs to define the start, middle and end of a linkedlist
+    struct digit *start, *ptr;                                //Three structs to define the start, middle and end of a linkedlist
+    int searchNum;
     printf("Please enter a number! \n");
     start = readNumber(start);                          //New function to read the number directly from user input
     printNumber(start);                                 //Printing using a print function now
+    ptr = searchNumber(start, searchNum);
+    if (ptr != NULL)
+    {
+        printf("FOund %d at %p location.\n", searchNum, ptr);
+    } else
+    {
+        printf("Digit %d not found. \n", searchNum);
+    }
     freeNumber(start);                                  //Free the memory upon completion of processing
     return 0;
 }
@@ -91,3 +101,14 @@ void freeNumber(struct digit *start)
         ptr = temp;                     //get back the previous saved next from temp
     }
 }
+
+//Function searchNum to find a number
+struct digit *searchNumber(struct digit *start, int number)
+{
+    struct digit *ptr = start;
+    while (ptr != NULL && ((ptr -> num) != number))
+    {
+        ptr = ptr -> next;
+    }
+    return (ptr);
+};
