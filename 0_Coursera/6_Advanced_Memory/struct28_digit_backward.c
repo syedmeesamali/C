@@ -11,16 +11,19 @@ struct digit * createDigit(int dig);
 struct digit * append(struct digit * end, struct digit * newDigptr);
 void printNumber(struct digit *start);
 void freeNumber(struct digit *start);
+struct digit *reverseNumber(struct digit *start);
+struct digit *insertAt(struct digit *start, struct digit *newptr);
 struct digit * readNumber(void);
 
 //Main function
 int main(void) {
-    struct digit *start;
+    struct digit *start, *ptr, *backwards;
     start = readNumber();
-
-    printf("The number ");
+    printf("\nThe number entered is: ");
     printNumber(start);
-
+    backwards = reverseNumber(start);
+    printf("\nThe reversed number is: ");
+    printNumber(backwards);
     freeNumber(start);
     return 0;
 }
@@ -82,11 +85,20 @@ struct digit * readNumber(void) {
     return(start);
 }
 
+//Insert at front function
+struct digit *insertAt(struct digit *start, struct digit *newptr)
+{
+    newptr -> next = start;
+    return (newptr);
+};
+
+
+//Main reversing function
 struct digit *reverseNumber(struct digit *start)
 {
     struct digit *ptr = start;
-    struct digit *bstart;
-    struct digit *newstart;
+    struct digit *bstart = NULL;
+    struct digit *newdigit;
     if (start != NULL)
     {
         bstart = createDigit(start -> num);
@@ -95,6 +107,9 @@ struct digit *reverseNumber(struct digit *start)
 
     while (ptr != NULL)
     {
-        newdigit = createDigit(start -> num);
+        newdigit = createDigit(ptr -> num);
+        bstart = insertAt(bstart, newdigit);
+        ptr = ptr -> next;
     }
+    return (bstart);
 };
