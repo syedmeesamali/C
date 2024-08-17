@@ -12,7 +12,7 @@ struct digit * append(struct digit * end, struct digit * newDigptr);
 void printNumber(struct digit *start);
 void freeNumber(struct digit *start);
 struct digit *reverseNumber(struct digit *start);
-struct digit *insertAt(struct digit *start, struct digit *newptr);
+struct digit *insertAtFront(struct digit *start, struct digit *newptr);
 struct digit * readNumber(void);
 
 //Main function
@@ -86,7 +86,7 @@ struct digit * readNumber(void) {
 }
 
 //Insert at front function
-struct digit *insertAt(struct digit *start, struct digit *newptr)
+struct digit *insertAtFront(struct digit *start, struct digit *newptr)
 {
     newptr -> next = start;
     return (newptr);
@@ -108,7 +108,7 @@ struct digit *reverseNumber(struct digit *start)
     while (ptr != NULL)
     {
         newdigit = createDigit(ptr -> num);
-        bstart = insertAt(bstart, newdigit);
+        bstart = insertAtFront(bstart, newdigit);
         ptr = ptr -> next;
     }
     return (bstart);
