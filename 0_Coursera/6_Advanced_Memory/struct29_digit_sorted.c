@@ -108,7 +108,15 @@ struct digit *insertIntoSorted(struct digit *start, struct digit *newDig)
         prev = ptr;
         ptr = ptr -> next;
     }
-
+    if (prev == NULL)
+    {
+        start = insertAtFront(start, newDig);
+    } else
+    {
+        prev -> next = newDig;
+        newDig -> next = ptr;
+    }
+    return (start);
 };
 
 //Main reversing function
