@@ -129,7 +129,7 @@ int countRedun(struct digit * start)
     while (ptr != NULL)
     {
         newDigit = createDigit(ptr -> num);
-        count = count + 1;
+        sortedStart = insertIntoSorted(sortedStart, newDigit);
         printf("\nNew pass = %d", newDigit -> num);
         ptr = ptr -> next;
     }
