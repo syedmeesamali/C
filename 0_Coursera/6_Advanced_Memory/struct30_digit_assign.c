@@ -123,14 +123,16 @@ int countRedun(struct digit * start)
     {
         sortedStart = createDigit(start -> num);
         ptr = ptr -> next;
-        printf("\nFirst pass = %d", sortedStart -> num);
     }
 
     while (ptr != NULL)
     {
         newDigit = createDigit(ptr -> num);
-        sortedStart = insertIntoSorted(sortedStart, newDigit);
-        printf("\nNew pass = %d", newDigit -> num);
+        if (sortedStart -> num == newDigit -> num)
+        {
+            count = count + 1;
+        }
+        sortedStart = newDigit;
         ptr = ptr -> next;
     }
     return count;
