@@ -13,6 +13,7 @@ struct digit {
     struct digit *next;
 };
 
+
 // Add a prototype for countRedun() here
 struct digit * createDigit(int);
 struct digit * append(struct digit * end, struct digit * newDigptr);
@@ -20,7 +21,6 @@ void printNumber(struct digit *);
 void freeNumber(struct digit *);
 struct digit *readNumber(void);
 int divisibleByThree(struct digit * start);
-int countRedun(struct digit * start);
 int changeThrees(struct digit * start);
 
 
@@ -28,10 +28,13 @@ int changeThrees(struct digit * start);
 int main(void) {
     struct digit *start;
     start = readNumber();
+
     printf("The number ");
     printNumber(start);
-    printf("\n contains %d redundancies.\n", countRedun(start));
+    printf("contains %d redundancies.\n", countRedun(start));
+
     freeNumber(start);
+
     return 0;
 }
 
@@ -98,7 +101,6 @@ int divisibleByThree(struct digit * start) {
     else return 0;
 }
 
-//Change the 3's to some other digit
 int changeThrees(struct digit * start) {
     struct digit * ptr = start;
     int sum = 0;
@@ -112,6 +114,7 @@ int changeThrees(struct digit * start) {
     return(sum);
 }
 
+// Write your countRedun() function here
 //Count of redundancy in a digit entered by user
 int countRedun(struct digit * start)
 {
