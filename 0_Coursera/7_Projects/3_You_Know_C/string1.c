@@ -4,12 +4,12 @@ int main()
     char x[] = "hello";
     int i = 0;
     int py_len();
-    while (x[i] != '\0')
+    printf("%s has length of %d. \n", x, py_len(x));
+    for (int i=py_len(x); i >= 0; i--)
     {
         printf("%c", x[i]);
-        i++;
     }
-    printf("Len was %d. \n", py_len(x));
+    printf("\n");
     return 0;
 }
 
@@ -18,6 +18,6 @@ int py_len(self)
 char self[];
 {
     int i;
-    for (i=0; i<self[i]; i++)
-    return i;
+    for (i=0; i<self[i]; i++);
+        return i;
 }
