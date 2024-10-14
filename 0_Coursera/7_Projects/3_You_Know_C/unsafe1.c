@@ -8,6 +8,7 @@ int main()
     char *buffer;
     int index;
     char ch;
+    int r;
     const char filename[] = "challenge.txt";
     FILE *fp;
 
@@ -37,10 +38,27 @@ int main()
         fprintf(stderr, "Unable to open file %s for writing .... \n", filename);
         return 1;
     }
-    fwrite(buffer, 1, index, fp);
+
+    r = fwrite(buffer, 1, index, fp);
+    //3. Check for file writing issues
+    if (r != index)
+    {
+        fprintf(stderr, "Unable to write 32 bytes to %s.\n", filename);
+        fclose(fp);
+        return 1;
+    }
+    //4. Buffer should be freed after usage (malloc memory).
     free(buffer);
-    fclose(fp);
-    printf("\n%s is created!", filename);
+
+    //5. File closing issues.
+    r = fclose(fp);
+    if (r != 0)
+    {
+        fprintf(stderr, "Unable to close %s. \n", filename);
+        return 1;
+    }
+
+    printf("\n%s is created and %d bytes were written to it!", filename, index);
     return 0;
 
 }
