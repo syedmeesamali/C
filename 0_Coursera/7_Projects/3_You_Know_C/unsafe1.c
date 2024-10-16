@@ -7,7 +7,7 @@ int main()
 {
     char *buffer;
     int index;
-    char ch;
+    int ch;         //Use int and not a character or char
     int r;
     const char filename[] = "challenge.txt";
     FILE *fp;
