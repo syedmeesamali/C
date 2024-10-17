@@ -21,11 +21,15 @@ int main()
     }
     printf("Type some text: ");
     index = 0;
-    while (ch = getchar())
+    //1b. Never use ch = getchar() as the looping condition
+    while (1)
     {
+        ch = getchar();
         *(buffer + index) = ch;
         index++;
-        if (ch == '\n')
+        if (index == 31)
+            break;              //Check the limit for the buffer overflow / array overflow
+        if (ch == '\n' || ch == EOF)        //EOF can be test along with \n
         {
             break;
         }
