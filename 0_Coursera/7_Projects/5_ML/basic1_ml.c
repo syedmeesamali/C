@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<time.h>
 
 float train[][2] = {
     {0, 0},             //For zero predict 0
@@ -19,7 +20,9 @@ float random_float(void)
 int main()
 {
     // y = x * w
-    float w = random_float();
+    //srand(time(0));
+    srand(69);          //Some fixed rand with a seed
+    float w = random_float() * 10.0f;      //multiply by 10 to get random from 0 - 10
     printf("ML in C. Rand number = %f \n", w);
     return 0;
 }
