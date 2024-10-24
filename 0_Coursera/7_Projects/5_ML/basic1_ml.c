@@ -18,18 +18,29 @@ float random_float(void)
     return (float) rand() / (float) RAND_MAX;
 }
 
+//Main cost function
+float cost(float w)
+{
+    float result = 0.0f;
+    for (size_t i=0; i<train_count; ++i)
+    {
+        float x = train[i][0];
+        float y = x * w;                //As per original logic of ML
+        float d = y - train[i][0];      //Distance of expected and original
+        result += d * d;
+    }
+    result /= train_count;
+    return result;
+}
 //Main here
 int main()
 {
     // y = x * w
-    //srand(time(0));
     srand(69);
     float w = random_float()*100.0f;
-    for (size_t i=0; i<train_count; ++i)
-    {
-        float x = train[i][0];
-        float y = x * w;            //As per original logic of ML
-        printf("actual: %f, expected: %f\n", y, train[i][0]);
-    }
+    float eps = 1e-3;
+
+    printf("%d\n", cost(w));
+    printf("%d\n", cost(w + eps));
     return 0;
 }
