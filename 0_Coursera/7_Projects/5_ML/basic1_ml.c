@@ -37,10 +37,11 @@ int main()
 {
     // y = x * w
     srand(69);
-    float w = random_float()*100.0f;
+    float w = random_float()*10.0f;
     float eps = 1e-3;
-
-    printf("%d\n", cost(w));
-    printf("%d\n", cost(w + eps));
+    printf("%f is w\n", w);
+    printf("%f\n", cost(w));
+    printf("%f\n", cost(w - eps));
+    printf("%f\n", cost(w - eps * 2));
     return 0;
 }
