@@ -8,8 +8,8 @@ float train[][2] = {
     {0, 0},             //For zero predict 0
     {1, 2},             //For 1 it is 2
     {2, 4},             //For 2 it is 4
-    {3, 6},
-    {4, 8},
+    {3, 6},             //For 3 it is 6
+    {4, 8},             //Pattern emerges .... so for 4 it is 8 ... duplicates
 };
 
 //Random floats func
@@ -29,7 +29,7 @@ float cost(float w)
         float d = y - train[i][0];      //Distance of expected and original
         result += d * d;
     }
-    result /= train_count;
+    result = result / train_count;
     return result;
 }
 //Main here
@@ -39,7 +39,7 @@ int main()
     srand(69);
     float w = random_float()*10.0f;
     float eps = 1e-3;
-    printf("%f is w\n", w);
+    printf("w is %f\n", w);
     printf("%f\n", cost(w));
     printf("%f\n", cost(w - eps));
     printf("%f\n", cost(w - eps * 2));
