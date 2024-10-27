@@ -39,9 +39,12 @@ int main()
     srand(69);
     float w = random_float()*10.0f;
     float eps = 1e-3;
-    printf("w is %f\n", w);
-    printf("%f\n", cost(w));
-    printf("%f\n", cost(w - eps));
-    printf("%f\n", cost(w - eps * 2));
+    float rate = 1e-3;
+    for (size_t i=0; i<=200; ++i)
+    {
+        float dcost = (cost(w + eps) - cost(w)) / eps;          //This is definition of a derivative (f(h+a) - f(h) / a)
+        w = w - rate * dcost;
+        printf("%f\n", cost(w));
+    }
     return 0;
 }
