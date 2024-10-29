@@ -38,7 +38,7 @@ int main()
     // y = x * w
     srand(69);
     //float w = random_float()*10.0f;
-    float w = 1.0f;
+    float w = 5.0f;
     float eps = 1e-3;
     float rate = 0.1;
     printf("Cost: %f\n");
