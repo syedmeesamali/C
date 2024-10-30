@@ -18,14 +18,14 @@ float random_float(void)
     return (float) rand() / (float) RAND_MAX;
 }
 
-//Main cost function
-float cost(float w)
+//Main cost function - w and b are main parameters (b as bias)
+float cost(float w, float b)
 {
     float result = 0.0f;
     for (size_t i=0; i<train_count; ++i)
     {
         float x = train[i][0];
-        float y = x * w;                //As per original logic of ML
+        float y = x * w + b;                //As per original logic of ML
         float d = y - train[i][0];      //Distance of expected and original
         result += d * d;
     }
@@ -38,15 +38,19 @@ int main()
     // y = x * w
     srand(69);
     //float w = random_float()*10.0f;
-    float w = 5.0f;
+    float w = 5.0f;     //Main original w parameter
+    float b = 5.0f;     //New additional parameter
     float eps = 1e-3;
     float rate = 0.1;
     printf("Cost: %f\n");
     for (size_t i=0; i<=200; ++i)
     {
-        float dcost = (cost(w + eps) - cost(w)) / eps;          //This is definition of a derivative (f(h+a) - f(h) / a)
-        w = w - rate * dcost;
-        printf("Cost: %f, w = %f\n", cost(w), w);
+        float c = cost(w, b);
+        float dw = (cost(w + eps, b) - c) / eps;          //This is definition of a derivative (f(h+a) - f(h) / a)
+        float db = (cost(w, b + eps) - c) / eps;
+        w = w - rate * dw;
+        b = b - rate * db;
+        printf("Cost: %f, w = %f, b = %f\n", cost(w, b), w, b);
     }
     return 0;
 }
