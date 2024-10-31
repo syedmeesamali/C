@@ -26,7 +26,7 @@ float cost(float w, float b)
     {
         float x = train[i][0];
         float y = x * w + b;                //As per original logic of ML
-        float d = y - train[i][0];      //Distance of expected and original
+        float d = y - train[i][1];      //Distance of expected and original
         result += d * d;
     }
     result = result / train_count;
