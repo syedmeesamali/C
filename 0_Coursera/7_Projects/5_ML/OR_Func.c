@@ -37,15 +37,15 @@ float cost(float w1, float w2)
 int main()
 {
     srand(69);
-    float eps = 1e-3;
-    float rate = 1e-3;
 
     float w1 = random_float();
     float w2 = random_float();
-    for (size_t i=0; i<2; ++i)
+    float eps = 0.1;
+    float rate = 0.1;
+    for (size_t i=0; i<100; ++i)
     {
         float c = cost(w1, w2);
-        printf("w1 = %f, w2 = %f\n", w1, w2);
+        printf("w1 = %f, w2 = %f, c = %f\n", w1, w2, c);
         float dw1 = (cost(w1 + eps, w2) - c)/ eps;
         float dw2 = (cost(w1, w2 + eps) - c) / eps;
         w1 -= rate * dw1;
