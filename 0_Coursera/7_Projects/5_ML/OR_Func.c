@@ -2,6 +2,12 @@
 #include<stdlib.h>
 #include<time.h>
 
+//Sigmoid activation function
+float sigmoid(float x)
+{
+    return 1.f / (1.f + expf(-x));
+}
+
 //OR-gate implementation
 float train[][3] = {
     {0, 0, 0},
@@ -26,7 +32,7 @@ float cost(float w1, float w2)
     {
         float x1 = train[i][0];
         float x2 = train[i][1];
-        float y = x1 * w1 + x2 * w2;
+        float y = sigmoid(x1 * w1 + x2 * w2);
         float d = y - train[i][2];
         result += d * d;
     }
@@ -36,6 +42,11 @@ float cost(float w1, float w2)
 //Main here
 int main()
 {
+    for (float x=-10.f; x<=10.f; x+=1.f)
+    {
+        printf("%f -> %f \n", x, sigmoid(x));
+    }
+    return 0;
     srand(69);
 
     float w1 = random_float();
