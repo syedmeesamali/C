@@ -46,14 +46,13 @@ int main()
     {
         printf("%f -> %f \n", x, sigmoid(x));
     }
-    return 0;
     srand(69);
 
-    float w1 = random_float();
-    float w2 = random_float();
+    float w1 = random_float()*10 - 5;
+    float w2 = random_float()*10 - 5;
     float eps = 0.1;
     float rate = 0.1;
-    for (size_t i=0; i<100; ++i)
+    for (size_t i=0; i<1000; ++i)
     {
         float c = cost(w1, w2);
         printf("w1 = %f, w2 = %f, c = %f\n", w1, w2, c);
@@ -61,6 +60,14 @@ int main()
         float dw2 = (cost(w1, w2 + eps) - c) / eps;
         w1 -= rate * dw1;
         w2 -= rate * dw2;
+    }
+
+    for (size_t i=0; i<2; ++i)
+    {
+        for (size_t j=0; j<2; ++j)
+        {
+            printf("%zu | %zu = %f \n", i, j, sigmoid(i*w1 + j*w2));
+        }
     }
     return 0;
 }
