@@ -48,8 +48,8 @@ int main()
     }
     srand(69);
 
-    float w1 = random_float()*10 - 5;
-    float w2 = random_float()*10 - 5;
+    float w1 = random_float();
+    float w2 = random_float();
     float eps = 0.1;
     float rate = 0.1;
     for (size_t i=0; i<1000; ++i)
