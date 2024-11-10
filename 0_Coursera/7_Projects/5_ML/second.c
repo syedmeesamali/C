@@ -10,6 +10,22 @@ float train[][2] =
     {4, 8}
 };
 
+#define train_count 5
+
+//Cost function
+float cost(float w)
+{
+    float result = 0.0f;
+    for (size_t i=0; i<5; ++i)
+    {
+        float x = train[i][0];
+        float y = x * w;
+        float d = y - train[i][0];
+        result += d * d;
+        printf("x = %f, y = %f, dist = %f, train[0][i] = %f, result = %f \n", x, y, d, train[0][i], result);
+    }
+}
+
 //Get random floats
 float rand_float(void)
 {
@@ -23,13 +39,5 @@ int main()
     float w = rand_float();
     // y = x * w + b    
     printf("\n Traing data: train[3][1] = %f \n", train[3][1]);
-    for (size_t i=0; i<5; ++i)
-    {
-        float x = train[i][0];
-        float y = x * w;
-        float d = y - train[i][0];
-        result += d * d;
-        printf("x = %f, y = %f, dist = %f, train[0][i] = %f, result = %f \n", x, y, d, train[0][i], result);
-    }
     return 0;
 }
