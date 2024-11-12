@@ -22,8 +22,9 @@ float cost(float w)
         float y = x * w;
         float d = y - train[i][0];
         result += d * d;
-        printf("x = %f, y = %f, dist = %f, train[0][i] = %f, result = %f \n", x, y, d, train[0][i], result);
+        printf("x = %f, y = %f, dist = %f, train[i][1] = %f, result = %f \n", x, y, d, train[i][1], result);
     }
+    return result;
 }
 
 //Get random floats
@@ -35,9 +36,8 @@ float rand_float(void)
 int main()
 {
     srand(70);
-    float result=0.0f;
-    float w = rand_float();
+    float w = rand_float() * 10.0f;
     // y = x * w + b    
-    printf("\n Traing data: train[3][1] = %f \n", train[3][1]);
+    printf("\n Result = Cost(w) = %f \n", cost(w));
     return 0;
 }
