@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 //Our simple training data
-float train[][2] = 
+float train[][2] =
 {
     {0, 0},
     {1, 2},
@@ -22,7 +22,7 @@ float cost(float w)
         float y = x * w;
         float d = y - train[i][0];
         result += d * d;
-        printf("x = %f, y = %f, dist = %f, train[i][1] = %f, result = %f \n", x, y, d, train[i][1], result);
+        //printf("x = %f, y = %f, dist = %f, train[i][1] = %f, result = %f \n", x, y, d, train[i][1], result);
     }
     return result;
 }
@@ -37,7 +37,11 @@ int main()
 {
     srand(70);
     float w = rand_float() * 10.0f;
-    // y = x * w + b    
-    printf("\n Result = Cost(w) = %f \n", cost(w));
+    // y = x * w + b
+    float eps = 1e-3;
+    float dcost = (cost(w + eps) - cost(w)) / eps;
+    printf("\n Cost(w) = %f \n", cost(w));
+    w = w - dcost;
+    printf("\n Cost(w) = %f \n", cost(w));
     return 0;
 }
