@@ -43,5 +43,6 @@ int main()
     printf("\n Cost(w) = %f \n", cost(w));
     w = w - dcost;
     printf("\n Cost(w) = %f \n", cost(w));
+    printf("\n Cost(w) = %f \n", cost(w));
     return 0;
 }
