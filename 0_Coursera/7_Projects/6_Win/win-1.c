@@ -24,6 +24,46 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lparam)
 //Main function
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
-    MessageBox(NULL, "Good bye cruel world.", "Note", MB_OK);
-    return 0;
+    WNDCLASSEX wc;
+    HWND hwnd;
+    MSG msg;
+
+    //Step-1: Registering the windows class.
+    wc.cbSize       =   sizeof(WNDCLASSEX);
+    wc.style        =   0;
+    wc.lpfnWndProc  =   WndProc;
+    wc.cbClsExtra   =   0;
+    wc.cbWndExtra   =   0;
+    wc.hInstance    =   hInstance;
+    wc.hIcon        =   LoadIcon(NULL, IDI_APPLICATION);
+    wc.hCursor      =   LoadCursor(NULL, IDC_IBEAM);
+    wc.hbrBackground =  (HBRUSH)(COLOR_WINDOW+1);
+    wc.lpszMenuName =   NULL;
+    wc.lpszClassName =  g_szClassName;
+    wc.hIconSm      =   LoadIcon(NULL, IDI_APPLICATION);
+    if (!RegisterClassEx(&wc))
+    {
+        MessageBox(NULL, "Window registration failed.", "Error", MB_ICONEXCLAMATION | MB_OK);
+        return 0;
+    }
+
+    //Step-2: Create the window
+    hwnd = CreateWindowEx(WS_EX_CLIENTEDGE, g_szClassName, "My own private window", WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT,
+                          240, 120, NULL, NULL, hInstance, NULL);
+    if (hwnd == NULL)
+    {
+        MessageBox(NULL, "Window registration failed.", "Error", MB_ICONEXCLAMATION | MB_OK);
+    }
+
+    ShowWindow(hwnd, nCmdShow);
+    UpdateWindow(hwnd);
+
+    //Step-3: The message loop
+    while(GetMessage(&msg, NULL, 0, 0) > 0)
+    {
+        TranslateMessage(&msg);
+        DispatchMessage(&msg);
+    }
+    return msg.wParam;
+
 }
