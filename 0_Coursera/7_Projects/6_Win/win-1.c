@@ -7,6 +7,13 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lparam)
 {
     switch(msg)
     {
+    case WM_LBUTTONDOWN:
+        {
+            char szFileName[MAX_PATH];
+            HINSTANCE hInstance = GetModuleHandle(NULL);
+            GetModuleFileName(hInstance, szFileName, MAX_PATH);
+            MessageBox(hwnd, szFileName, "This program is: ", MB_OK | MB_ICONINFORMATION);
+        }
     case WM_CLOSE:
         DestroyWindow(hwnd);
         break;
@@ -18,8 +25,6 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lparam)
     }
     return 0;
 }
-
-
 
 //Main function
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
@@ -35,9 +40,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     wc.cbClsExtra   =   0;
     wc.cbWndExtra   =   0;
     wc.hInstance    =   hInstance;
-    wc.hIcon        =   LoadIcon(NULL, IDI_APPLICATION);
-    wc.hCursor      =   LoadCursor(NULL, IDC_IBEAM);
-    wc.hbrBackground =  (HBRUSH)(COLOR_WINDOW+1);
+    wc.hIcon        =   LoadIcon(NULL, IDI_WINLOGO);
+    wc.hCursor      =   LoadCursor(NULL, IDC_HAND);
+    wc.hbrBackground =  (HBRUSH)(COLOR_WINDOW+2);
     wc.lpszMenuName =   NULL;
     wc.lpszClassName =  g_szClassName;
     wc.hIconSm      =   LoadIcon(NULL, IDI_APPLICATION);
@@ -48,8 +53,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     }
 
     //Step-2: Create the window
-    hwnd = CreateWindowEx(WS_EX_CLIENTEDGE, g_szClassName, "My own private window", WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT,
-                          240, 120, NULL, NULL, hInstance, NULL);
+    hwnd = CreateWindowEx(WS_EX_ACCEPTFILES, g_szClassName, "My own private window", WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT,
+                          600, 420, NULL, NULL, hInstance, NULL);
     if (hwnd == NULL)
     {
         MessageBox(NULL, "Window registration failed.", "Error", MB_ICONEXCLAMATION | MB_OK);
