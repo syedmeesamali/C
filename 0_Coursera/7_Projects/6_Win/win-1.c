@@ -1,4 +1,7 @@
 #include<Windows.h>
+//#include "resource.h"
+
+//IDI_MYICON ICON "my_icon.ico"
 
 const char g_szClassName[] = "myWindowClass";
 
@@ -12,7 +15,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lparam)
             char szFileName[MAX_PATH];
             HINSTANCE hInstance = GetModuleHandle(NULL);
             GetModuleFileName(hInstance, szFileName, MAX_PATH);
-            MessageBox(hwnd, szFileName, "This program is: ", MB_OK | MB_ICONINFORMATION);
+            MessageBox(hwnd, szFileName, "Location of this program is: ", MB_OK | MB_ICONINFORMATION);
         }
     case WM_CLOSE:
         DestroyWindow(hwnd);
@@ -40,9 +43,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     wc.cbClsExtra   =   0;
     wc.cbWndExtra   =   0;
     wc.hInstance    =   hInstance;
-    wc.hIcon        =   LoadIcon(NULL, IDI_WINLOGO);
+    wc.hIcon        =   LoadIcon(NULL, IDI_ASTERISK);
     wc.hCursor      =   LoadCursor(NULL, IDC_HAND);
-    wc.hbrBackground =  (HBRUSH)(COLOR_WINDOW+2);
+    wc.hbrBackground =  (HBRUSH)(COLOR_WINDOW+1);
     wc.lpszMenuName =   NULL;
     wc.lpszClassName =  g_szClassName;
     wc.hIconSm      =   LoadIcon(NULL, IDI_APPLICATION);
@@ -70,5 +73,4 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
         DispatchMessage(&msg);
     }
     return msg.wParam;
-
 }
