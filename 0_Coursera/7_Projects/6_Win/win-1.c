@@ -1,7 +1,7 @@
 #include<Windows.h>
-//#include "resource.h"
+#include "resource.h"
 
-//IDI_MYICON ICON "my_icon.ico"
+IDI_MYICON ICON "my_icon.ico"
 
 const char g_szClassName[] = "myWindowClass";
 
